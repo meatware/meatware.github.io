@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="giri">
+    <link rel="canonical" href="http://fillmein.com/modules/base_module/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>base_module - Sys Bashrc</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <link href="../../custom_css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Base module", url: "#_top", children: [
+              {title: "Function Index", url: "#function-index" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../docker-compose_module/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../docker-compose_module/" class="btn btn-xs btn-link">
+        docker-compose_module
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../history_module/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../history_module/" class="btn btn-xs btn-link">
+        history_module
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="base-module">Base module</h1>
+<p><strong><em>(in /home/bsgt/sys_bashrc/modules/base_module.sh)</em></strong></p>
+<h2 id="function-index">Function Index</h2>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">ips</span>
+<span style="color: #ae81ff">02</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">down4me</span>
+<span style="color: #ae81ff">03</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">myip</span>
+<span style="color: #ae81ff">04</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">pickfrom</span>
+<span style="color: #ae81ff">05</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">passgen</span>
+<span style="color: #ae81ff">06</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">mkcd</span>
+<span style="color: #ae81ff">07</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">lsgrep</span>
+<span style="color: #ae81ff">08</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">usage</span>
+<span style="color: #ae81ff">09</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">comex</span>
+<span style="color: #ae81ff">10</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">buf</span>
+<span style="color: #ae81ff">11</span> <span style="color: #f92672">-</span> <span style="color: #66d9ef">del</span>
+</code></pre></div>
+
+<hr />
+<h3 id="ips">&gt;&gt; ips():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: display all ip addresses for this host</p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> ips<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">command</span> -v ifconfig <span style="color: #f8f8f2">&amp;</span>&gt;/dev/null
+    <span style="color: #66d9ef">then</span>
+        ifconfig <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;/inet /{ gsub(/addr:/, &quot;&quot;); print $2 }&#39;</span>
+    <span style="color: #66d9ef">elif</span> <span style="color: #f8f8f2">command</span> -v ip <span style="color: #f8f8f2">&amp;</span>&gt;/dev/null
+    <span style="color: #66d9ef">then</span>
+        ip addr <span style="color: #f8f8f2">|</span> grep -oP <span style="color: #e6db74">&#39;inet \K[\d.]+&#39;</span>
+    <span style="color: #66d9ef">else</span>
+        <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;You don&#39;t have ifconfig or ip command installed!&quot;</span>
+    <span style="color: #66d9ef">fi</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="down4me">&gt;&gt; down4me():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: checks whether a website is down for you, or everybody</p>
+<p><strong><em>param</em></strong>: 1: website url</p>
+<p><strong><em>example</em></strong>: <code>$ down4me http://www.google.com</code></p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> down4me<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    curl -Ls <span style="color: #e6db74">&quot;http://downforeveryoneorjustme.com/</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> sed <span style="color: #e6db74">&#39;/just you/!d;s/&lt;[^&gt;]*&gt;//g&#39;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="myip">&gt;&gt; myip():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: displays your ip address, as seen by the Internet</p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> myip<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">list</span><span style="color: #f92672">=(</span><span style="color: #e6db74">&quot;http://myip.dnsomatic.com/&quot;</span> <span style="color: #e6db74">&quot;http://checkip.dyndns.com/&quot;</span> <span style="color: #e6db74">&quot;http://checkip.dyndns.org/&quot;</span><span style="color: #f92672">)</span>
+    <span style="color: #66d9ef">for</span> url in <span style="color: #e6db74">${</span><span style="color: #f8f8f2">list[*]</span><span style="color: #e6db74">}</span>
+    <span style="color: #66d9ef">do</span>
+        <span style="color: #f8f8f2">res</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>curl -s <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">url</span><span style="color: #e6db74">}&quot;</span><span style="color: #66d9ef">)</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #f8f8f2">$?</span> -eq <span style="color: #ae81ff">0</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span><span style="color: #66d9ef">then</span>
+            break<span style="color: #f8f8f2">;</span>
+        <span style="color: #66d9ef">fi</span>
+    <span style="color: #66d9ef">done</span>
+    <span style="color: #f8f8f2">res</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$res</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> grep -Eo <span style="color: #e6db74">&#39;[0-9\.]+&#39;</span><span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">echo</span> -e <span style="color: #e6db74">&quot;Your public IP is: ${</span><span style="color: #f8f8f2">echo_bold_green</span><span style="color: #e6db74">} </span><span style="color: #f8f8f2">$res</span><span style="color: #e6db74"> ${</span><span style="color: #f8f8f2">echo_normal</span><span style="color: #e6db74">}&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="pickfrom">&gt;&gt; pickfrom():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: picks random line from file</p>
+<p><strong><em>param</em></strong>: 1: filename</p>
+<p><strong><em>example</em></strong>: <code>$ pickfrom /usr/share/dict/words</code></p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> pickfrom<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">file</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
+    <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span> <span style="color: #f92672">&amp;&amp;</span> reference <span style="color: #f8f8f2">$FUNCNAME</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #66d9ef">return</span>
+    <span style="color: #f8f8f2">length</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>cat <span style="color: #f8f8f2">$file</span> <span style="color: #f8f8f2">|</span> wc -l<span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">n</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>expr <span style="color: #f8f8f2">$RANDOM</span> <span style="color: #ae81ff">\*</span> <span style="color: #f8f8f2">$length</span> <span style="color: #ae81ff">\/</span> <span style="color: #ae81ff">32768</span> + <span style="color: #ae81ff">1</span><span style="color: #66d9ef">)</span>
+    head -n <span style="color: #f8f8f2">$n</span> <span style="color: #f8f8f2">$file</span> <span style="color: #f8f8f2">|</span> tail -1
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="passgen">&gt;&gt; passgen():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: generates random password from dictionary words</p>
+<p><strong><em>param</em></strong>: optional integer length</p>
+<p><strong><em>param</em></strong>: if unset, defaults to 4</p>
+<p><strong><em>example</em></strong>: <code>$ passgen</code></p>
+<p><strong><em>example</em></strong>: <code>$ passgen 6</code></p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> passgen<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">local</span> i pass <span style="color: #f8f8f2">length</span><span style="color: #f92672">=</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">1</span><span style="color: #66d9ef">:-</span><span style="color: #f8f8f2">4</span><span style="color: #e6db74">}</span>
+    <span style="color: #f8f8f2">pass</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #66d9ef">$(for</span> i in <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">eval</span> <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;{1..</span><span style="color: #f8f8f2">$length</span><span style="color: #e6db74">}&quot;</span><span style="color: #66d9ef">)</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span> pickfrom /usr/share/dict/words<span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">done))</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;With spaces (easier to memorize): </span><span style="color: #f8f8f2">$pass</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;Without (use this as the password): </span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #f8f8f2">$pass</span> <span style="color: #f8f8f2">|</span> tr -d <span style="color: #e6db74">&#39; &#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ passgen
+   └─ pickfrom
+</code></pre></div>
+
+<hr />
+<h3 id="mkcd">&gt;&gt; mkcd():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: make one or more directories and cd into the last one</p>
+<p><strong><em>param</em></strong>: one or more directories to create</p>
+<p><strong><em>example</em></strong>: <code>$ mkcd foo</code></p>
+<p><strong><em>example</em></strong>: <code>$ mkcd /tmp/img/photos/large</code></p>
+<p><strong><em>example</em></strong>: <code>$ mkcd foo foo1 foo2 fooN</code></p>
+<p><strong><em>example</em></strong>: <code>$ mkcd /tmp/img/photos/large /tmp/img/photos/self /tmp/img/photos/Beijing</code></p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> mkcd<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    mkdir -p -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">eval</span> <span style="color: #f8f8f2">cd</span> -- <span style="color: #e6db74">&quot;\&quot;\$</span><span style="color: #f8f8f2">$#</span><span style="color: #e6db74">\&quot;&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="lsgrep">&gt;&gt; lsgrep():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: search through directory contents with grep</p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> lsgrep<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    ls <span style="color: #f8f8f2">|</span> grep <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$*</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="usage">&gt;&gt; usage():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: disk usage per directory, in Mac OS X and Linux</p>
+<p><strong><em>param</em></strong>: 1: directory name</p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> usage<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #66d9ef">$(</span>uname<span style="color: #66d9ef">)</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Darwin&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+            du -hd <span style="color: #ae81ff">1</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
+        <span style="color: #66d9ef">else</span>
+            du -hd <span style="color: #ae81ff">1</span>
+        <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[</span> <span style="color: #66d9ef">$(</span>uname<span style="color: #66d9ef">)</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Linux&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+            du -h --max-depth<span style="color: #f92672">=</span><span style="color: #ae81ff">1</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
+        <span style="color: #66d9ef">else</span>
+            du -h --max-depth<span style="color: #f92672">=</span><span style="color: #ae81ff">1</span>
+        <span style="color: #66d9ef">fi</span>
+    <span style="color: #66d9ef">fi</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="comex">&gt;&gt; comex():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: checks for existence of a command</p>
+<p><strong><em>param</em></strong>: 1: command to check</p>
+<p><strong><em>example</em></strong>: <code>$ comex ls</code></p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> comex<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">type</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>  <span style="color: #75715e">#&amp;&gt; /dev/null ;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="buf">&gt;&gt; buf():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: back up file with timestamp</p>
+<p><strong><em>param</em></strong>: filename</p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> buf<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">filename</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">filetime</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>date +%Y%m%d_%H%M%S<span style="color: #66d9ef">)</span>
+    cp -a <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">filename</span><span style="color: #e6db74">}&quot;</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">filename</span><span style="color: #e6db74">}_${</span><span style="color: #f8f8f2">filetime</span><span style="color: #e6db74">}&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="del">&gt;&gt; del():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: move files to hidden folder in tmp, that gets cleared on each reboot</p>
+<p><strong><em>param</em></strong>: file or folder to be deleted</p>
+<p><strong><em>example</em></strong>: <code>del ./file.txt</code></p>
+<p><strong><em>group</em></strong>: base</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> del<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    mkdir -p /tmp/.trash <span style="color: #f92672">&amp;&amp;</span> mv <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span> /tmp/.trash<span style="color: #f8f8f2">;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../docker-compose_module/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../docker-compose_module/" class="btn btn-xs btn-link">
+        docker-compose_module
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../history_module/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../history_module/" class="btn btn-xs btn-link">
+        history_module
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/meatware/sys_bashrc.git/edit/master/docs/modules/base_module.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/meatware/sys_bashrc.git/">Windmill Dark</a> theme by giri (noraj).</p>
+</footer>
+
+</body>
+</html>

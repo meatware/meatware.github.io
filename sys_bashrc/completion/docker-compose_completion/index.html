@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="giri">
+    <link rel="canonical" href="http://fillmein.com/completion/docker-compose_completion/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>docker-compose_completion - Sys Bashrc</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <link href="../../custom_css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "docker-compose Completions", url: "#_top", children: [
+              {title: "Function Index", url: "#function-index" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../completion/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../completion/" class="btn btn-xs btn-link">
+        completion
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../terraform_completion/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../terraform_completion/" class="btn btn-xs btn-link">
+        terraform_completion
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="docker-compose-completions">docker-compose Completions</h1>
+<p><strong><em>(in /home/bsgt/sys_bashrc/completions/docker-compose_completion.sh)</em></strong></p>
+<h2 id="function-index">Function Index</h2>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__docker_compose_q</span>
+<span style="color: #ae81ff">02</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__docker_compose_to_alternatives</span>
+<span style="color: #ae81ff">03</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__docker_compose_to_extglob</span>
+<span style="color: #ae81ff">04</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__docker_compose_has_option</span>
+<span style="color: #ae81ff">05</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__docker_compose_map_key_of_current_option</span>
+<span style="color: #ae81ff">06</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__docker_compose_nospace</span>
+<span style="color: #ae81ff">07</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__docker_compose_services</span>
+<span style="color: #ae81ff">08</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__docker_compose_complete_services</span>
+<span style="color: #ae81ff">09</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__docker_compose_complete_running_services</span>
+<span style="color: #ae81ff">10</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_build</span>
+<span style="color: #ae81ff">11</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_bundle</span>
+<span style="color: #ae81ff">12</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_config</span>
+<span style="color: #ae81ff">13</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_create</span>
+<span style="color: #ae81ff">14</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_docker_compose</span>
+<span style="color: #ae81ff">15</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_down</span>
+<span style="color: #ae81ff">16</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_events</span>
+<span style="color: #ae81ff">17</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_exec</span>
+<span style="color: #ae81ff">18</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_help</span>
+<span style="color: #ae81ff">19</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_images</span>
+<span style="color: #ae81ff">20</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_kill</span>
+<span style="color: #ae81ff">21</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_logs</span>
+<span style="color: #ae81ff">22</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_pause</span>
+<span style="color: #ae81ff">23</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_port</span>
+<span style="color: #ae81ff">24</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_ps</span>
+<span style="color: #ae81ff">25</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_pull</span>
+<span style="color: #ae81ff">26</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_push</span>
+<span style="color: #ae81ff">27</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_restart</span>
+<span style="color: #ae81ff">28</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_rm</span>
+<span style="color: #ae81ff">29</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_run</span>
+<span style="color: #ae81ff">30</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_scale</span>
+<span style="color: #ae81ff">31</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_start</span>
+<span style="color: #ae81ff">32</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_stop</span>
+<span style="color: #ae81ff">33</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_top</span>
+<span style="color: #ae81ff">34</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_unpause</span>
+<span style="color: #ae81ff">35</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_up</span>
+<span style="color: #ae81ff">36</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose_version</span>
+<span style="color: #ae81ff">37</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_docker_compose</span>
+</code></pre></div>
+
+<hr />
+<h3 id="__docker_compose_q">&gt;&gt; __docker_compose_q():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __docker_compose_q<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    docker-compose <span style="color: #ae81ff">2</span>&gt;/dev/null <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">top_level_options[@]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="__docker_compose_to_alternatives">&gt;&gt; __docker_compose_to_alternatives():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __docker_compose_to_alternatives<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">parts</span><span style="color: #f92672">=(</span> <span style="color: #f8f8f2">$1</span> <span style="color: #f92672">)</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">IFS</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;|&#39;</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">parts[*]</span><span style="color: #e6db74">}&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="__docker_compose_to_extglob">&gt;&gt; __docker_compose_to_extglob():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __docker_compose_to_extglob<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">extglob</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span> __docker_compose_to_alternatives <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;@(</span><span style="color: #f8f8f2">$extglob</span><span style="color: #e6db74">)&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ __docker_compose_to_extglob
+   └─ __docker_compose_to_alternatives
+</code></pre></div>
+
+<hr />
+<h3 id="__docker_compose_has_option">&gt;&gt; __docker_compose_has_option():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __docker_compose_has_option<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">pattern</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">for</span> <span style="color: #f92672">((</span> <span style="color: #f8f8f2">i</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">;</span> i &lt; <span style="color: #f8f8f2">$cword;</span> ++i<span style="color: #f92672">))</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[$i]</span><span style="color: #e6db74">}</span> <span style="color: #f92672">=</span>~ ^<span style="color: #f92672">(</span><span style="color: #f8f8f2">$pattern</span><span style="color: #f92672">)</span>$ <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+            <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span>
+        <span style="color: #66d9ef">fi</span>
+    <span style="color: #66d9ef">done</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">1</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="__docker_compose_map_key_of_current_option">&gt;&gt; __docker_compose_map_key_of_current_option():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __docker_compose_map_key_of_current_option<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+        <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">glob</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
+
+        <span style="color: #f8f8f2">local</span> key glob_pos
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;=&quot;</span> <span style="color: #f92672">]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>        <span style="color: #75715e"># key= case</span>
+                <span style="color: #f8f8f2">key</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span>
+                <span style="color: #f8f8f2">glob_pos</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$((</span>cword <span style="color: #f92672">-</span> <span style="color: #ae81ff">2</span><span style="color: #66d9ef">))</span>
+        <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[[</span> <span style="color: #f8f8f2">$cur</span> <span style="color: #f92672">==</span> *<span style="color: #f92672">=</span>* <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>     <span style="color: #75715e"># key=value case (OSX)</span>
+                <span style="color: #f8f8f2">key</span><span style="color: #f92672">=</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">cur%=*</span><span style="color: #e6db74">}</span>
+                <span style="color: #f8f8f2">glob_pos</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$((</span>cword <span style="color: #f92672">-</span> <span style="color: #ae81ff">1</span><span style="color: #66d9ef">))</span>
+        <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;=&quot;</span> <span style="color: #f92672">]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+                <span style="color: #f8f8f2">key</span><span style="color: #f92672">=</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[$cword - 2]</span><span style="color: #e6db74">}</span>  <span style="color: #75715e"># key=value case</span>
+                <span style="color: #f8f8f2">glob_pos</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$((</span>cword <span style="color: #f92672">-</span> <span style="color: #ae81ff">3</span><span style="color: #66d9ef">))</span>
+        <span style="color: #66d9ef">else</span>
+                <span style="color: #66d9ef">return</span>
+        <span style="color: #66d9ef">fi</span>
+
+        <span style="color: #f92672">[</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">words[$glob_pos]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;=&quot;</span> <span style="color: #f92672">]</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f92672">((</span>glob_pos--<span style="color: #f92672">))</span>  <span style="color: #75715e"># --option=key=value syntax</span>
+
+        <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[$glob_pos]</span><span style="color: #e6db74">}</span> <span style="color: #f92672">==</span> @<span style="color: #f92672">(</span><span style="color: #f8f8f2">$glob</span><span style="color: #f92672">)</span> <span style="color: #f92672">]]</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$key</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="__docker_compose_nospace">&gt;&gt; __docker_compose_nospace():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __docker_compose_nospace<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">type</span> compopt <span style="color: #f8f8f2">&amp;</span>&gt;/dev/null <span style="color: #f92672">&amp;&amp;</span> compopt -o nospace
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="__docker_compose_services">&gt;&gt; __docker_compose_services():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __docker_compose_services<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    __docker_compose_q ps --services <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_1">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ __docker_compose_services
+   └─ __docker_compose_q
+</code></pre></div>
+
+<hr />
+<h3 id="__docker_compose_complete_services">&gt;&gt; __docker_compose_complete_services():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __docker_compose_complete_services<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>__docker_compose_services <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_2">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ __docker_compose_complete_services
+   └─ __docker_compose_services
+      └─ __docker_compose_q
+</code></pre></div>
+
+<hr />
+<h3 id="__docker_compose_complete_running_services">&gt;&gt; __docker_compose_complete_running_services():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __docker_compose_complete_running_services<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">names</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>__docker_compose_services --filter <span style="color: #f8f8f2">status</span><span style="color: #f92672">=</span>running<span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$names</span><span style="color: #e6db74">&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_3">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ __docker_compose_complete_running_services
+   └─ __docker_compose_services
+      └─ __docker_compose_q
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_build">&gt;&gt; _docker_compose_build():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_build<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --build-arg<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -e -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            __docker_compose_nospace
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        --memory<span style="color: #f8f8f2">|</span>-m<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--build-arg --compress --force-rm --help --memory -m --no-cache --no-rm --pull --parallel -q --quiet&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services --filter <span style="color: #f8f8f2">source</span><span style="color: #f92672">=</span>build
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_4">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose_build
+   └─ __docker_compose_complete_services
+      └─ __docker_compose_services
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_bundle">&gt;&gt; _docker_compose_bundle():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_bundle<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --output<span style="color: #f8f8f2">|</span>-o<span style="color: #f92672">)</span>
+            _filedir
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--push-images --help --output -o&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_config">&gt;&gt; _docker_compose_config():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_config<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --hash<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #f8f8f2">$cur</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">\\</span>* <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+                <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #e6db74">&#39;\*&#39;</span> <span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">else</span>
+                <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>__docker_compose_services<span style="color: #66d9ef">)</span><span style="color: #e6db74"> \\\* &quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">fi</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--hash --help --quiet -q --resolve-image-digests --services --volumes&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_5">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose_config
+   └─ __docker_compose_services
+      └─ __docker_compose_q
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_create">&gt;&gt; _docker_compose_create():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_create<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--build --force-recreate --help --no-build --no-recreate&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_docker_compose">&gt;&gt; _docker_compose_docker_compose():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_docker_compose<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --tlscacert<span style="color: #f8f8f2">|</span>--tlscert<span style="color: #f8f8f2">|</span>--tlskey<span style="color: #f92672">)</span>
+            _filedir
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        --file<span style="color: #f8f8f2">|</span>-f<span style="color: #f92672">)</span>
+            _filedir <span style="color: #e6db74">&quot;y?(a)ml&quot;</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        --log-level<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;debug info warning error critical&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        --project-directory<span style="color: #f92672">)</span>
+            _filedir -d
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        <span style="color: #66d9ef">$(</span>__docker_compose_to_extglob <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$daemon_options_with_args</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$daemon_boolean_options</span><span style="color: #e6db74"> </span><span style="color: #f8f8f2">$daemon_options_with_args</span><span style="color: #e6db74"> </span><span style="color: #f8f8f2">$top_level_options_with_args</span><span style="color: #e6db74"> --help -h --no-ansi --verbose --version -v&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">commands[*]</span><span style="color: #e6db74">}&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_6">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose_docker_compose
+   └─ __docker_compose_to_extglob
+      └─ __docker_compose_to_alternatives
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_down">&gt;&gt; _docker_compose_down():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_down<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --rmi<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;all local&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        --timeout<span style="color: #f8f8f2">|</span>-t<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help --rmi --timeout -t --volumes -v --remove-orphans&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_events">&gt;&gt; _docker_compose_events():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_events<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --json<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help --json&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_exec">&gt;&gt; _docker_compose_exec():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_exec<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --index<span style="color: #f8f8f2">|</span>--user<span style="color: #f8f8f2">|</span>-u<span style="color: #f8f8f2">|</span>--workdir<span style="color: #f8f8f2">|</span>-w<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;-d --detach --help --index --privileged -T --user -u --workdir -w&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_running_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_help">&gt;&gt; _docker_compose_help():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_help<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">commands[*]</span><span style="color: #e6db74">}&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_images">&gt;&gt; _docker_compose_images():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_images<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help --quiet -q&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_kill">&gt;&gt; _docker_compose_kill():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_kill<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        -s<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;SIGHUP SIGINT SIGKILL SIGUSR1 SIGUSR2&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #f8f8f2">$cur</span> <span style="color: #f8f8f2">|</span> tr <span style="color: #e6db74">&#39;[:lower:]&#39;</span> <span style="color: #e6db74">&#39;[:upper:]&#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help -s&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_running_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_logs">&gt;&gt; _docker_compose_logs():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_logs<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --tail<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--follow -f --help --no-color --tail --timestamps -t&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_pause">&gt;&gt; _docker_compose_pause():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_pause<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_running_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_port">&gt;&gt; _docker_compose_port():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_port<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --protocol<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;tcp udp&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span><span style="color: #f8f8f2">;</span>
+            <span style="color: #f8f8f2">;;</span>
+        --index<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span><span style="color: #f8f8f2">;</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help --index --protocol&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_ps">&gt;&gt; _docker_compose_ps():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_ps<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>__docker_compose_map_key_of_current_option <span style="color: #e6db74">&#39;--filter&#39;</span><span style="color: #66d9ef">)</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$key</span><span style="color: #e6db74">&quot;</span> in
+        <span style="color: #f8f8f2">source</span><span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;build image&quot;</span> -- <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">cur##*=</span><span style="color: #e6db74">}&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        status<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;paused restarting running stopped&quot;</span> -- <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">cur##*=</span><span style="color: #e6db74">}&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --filter<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;source status&quot;</span> -S <span style="color: #e6db74">&quot;=&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            __docker_compose_nospace
+            <span style="color: #66d9ef">return</span><span style="color: #f8f8f2">;</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--all -a --filter --help --quiet -q --services&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_7">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose_ps
+   └─ __docker_compose_map_key_of_current_option
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_pull">&gt;&gt; _docker_compose_pull():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_pull<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help --ignore-pull-failures --include-deps --no-parallel --quiet -q&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services --filter <span style="color: #f8f8f2">source</span><span style="color: #f92672">=</span>image
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_8">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose_pull
+   └─ __docker_compose_complete_services
+      └─ __docker_compose_services
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_push">&gt;&gt; _docker_compose_push():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_push<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help --ignore-push-failures&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_restart">&gt;&gt; _docker_compose_restart():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_restart<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --timeout<span style="color: #f8f8f2">|</span>-t<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help --timeout -t&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_running_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_rm">&gt;&gt; _docker_compose_rm():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_rm<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--force -f --help --stop -s -v&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">if</span> __docker_compose_has_option <span style="color: #e6db74">&quot;--stop|-s&quot;</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+                __docker_compose_complete_services
+            <span style="color: #66d9ef">else</span>
+                __docker_compose_complete_services --filter <span style="color: #f8f8f2">status</span><span style="color: #f92672">=</span>stopped
+            <span style="color: #66d9ef">fi</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_9">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose_rm
+   ├─ __docker_compose_has_option
+   └─ __docker_compose_complete_services
+      └─ __docker_compose_services
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_run">&gt;&gt; _docker_compose_run():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_run<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        -e<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -e -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            __docker_compose_nospace
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        --entrypoint<span style="color: #f8f8f2">|</span>--label<span style="color: #f8f8f2">|</span>-l<span style="color: #f8f8f2">|</span>--name<span style="color: #f8f8f2">|</span>--user<span style="color: #f8f8f2">|</span>-u<span style="color: #f8f8f2">|</span>--volume<span style="color: #f8f8f2">|</span>-v<span style="color: #f8f8f2">|</span>--workdir<span style="color: #f8f8f2">|</span>-w<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--detach -d --entrypoint -e --help --label -l --name --no-deps --publish -p --rm --service-ports -T --use-aliases --user -u --volume -v --workdir -w&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_scale">&gt;&gt; _docker_compose_scale():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_scale<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">in</span>
+        <span style="color: #f92672">=)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span><span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        --timeout<span style="color: #f8f8f2">|</span>-t<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help --timeout -t&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">compgen</span> -S <span style="color: #e6db74">&quot;=&quot;</span> -W <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>__docker_compose_services<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            __docker_compose_nospace
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_10">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose_scale
+   └─ __docker_compose_services
+      └─ __docker_compose_q
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_start">&gt;&gt; _docker_compose_start():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_start<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services --filter <span style="color: #f8f8f2">status</span><span style="color: #f92672">=</span>stopped
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_11">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose_start
+   └─ __docker_compose_complete_services
+      └─ __docker_compose_services
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_stop">&gt;&gt; _docker_compose_stop():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_stop<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> in
+        --timeout<span style="color: #f8f8f2">|</span>-t<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help --timeout -t&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_running_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_top">&gt;&gt; _docker_compose_top():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_top<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_running_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_unpause">&gt;&gt; _docker_compose_unpause():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_unpause<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--help&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services --filter <span style="color: #f8f8f2">status</span><span style="color: #f92672">=</span>paused
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_12">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose_unpause
+   └─ __docker_compose_complete_services
+      └─ __docker_compose_services
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_up">&gt;&gt; _docker_compose_up():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_up<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prev</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">in</span>
+        <span style="color: #f92672">=)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span><span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        --exit-code-from<span style="color: #f92672">)</span>
+            __docker_compose_complete_services
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        --scale<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">compgen</span> -S <span style="color: #e6db74">&quot;=&quot;</span> -W <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>__docker_compose_services<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            __docker_compose_nospace
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+        --timeout<span style="color: #f8f8f2">|</span>-t<span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--abort-on-container-exit --always-recreate-deps --build -d --detach --exit-code-from --force-recreate --help --no-build --no-color --no-deps --no-recreate --no-start --renew-anon-volumes -V --remove-orphans --scale --timeout -t&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+        *<span style="color: #f92672">)</span>
+            __docker_compose_complete_services
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_13">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose_up
+   └─ __docker_compose_services
+      └─ __docker_compose_q
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose_version">&gt;&gt; _docker_compose_version():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose_version<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> in
+        -*<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span> <span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;--short&quot;</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$cur</span><span style="color: #e6db74">&quot;</span> <span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_docker_compose">&gt;&gt; _docker_compose():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _docker_compose<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">previous_extglob_setting</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">shopt</span> -p extglob<span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">shopt</span> -s extglob
+
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">commands</span><span style="color: #f92672">=(</span>
+        build
+        bundle
+        config
+        create
+        down
+        events
+        <span style="color: #f8f8f2">exec</span>
+        <span style="color: #f8f8f2">help</span>
+        images
+        <span style="color: #f8f8f2">kill</span>
+        logs
+        pause
+        port
+        ps
+        pull
+        push
+        restart
+        rm
+        run
+        scale
+        start
+        stop
+        top
+        unpause
+        up
+        version
+    <span style="color: #f92672">)</span>
+
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">daemon_boolean_options</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #e6db74">        --skip-hostname-check</span>
+<span style="color: #e6db74">        --tls</span>
+<span style="color: #e6db74">        --tlsverify</span>
+<span style="color: #e6db74">    &quot;</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">daemon_options_with_args</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #e6db74">        --file -f</span>
+<span style="color: #e6db74">        --host -H</span>
+<span style="color: #e6db74">        --project-directory</span>
+<span style="color: #e6db74">        --project-name -p</span>
+<span style="color: #e6db74">        --tlscacert</span>
+<span style="color: #e6db74">        --tlscert</span>
+<span style="color: #e6db74">        --tlskey</span>
+<span style="color: #e6db74">    &quot;</span>
+
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">top_level_options_with_args</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #e6db74">        --log-level</span>
+<span style="color: #e6db74">    &quot;</span>
+
+    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=()</span>
+    <span style="color: #f8f8f2">local</span> cur prev words cword
+    _get_comp_words_by_ref -n : cur prev words cword
+
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">command</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;docker_compose&#39;</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">top_level_options</span><span style="color: #f92672">=()</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">counter</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span>
+
+    <span style="color: #66d9ef">while</span> <span style="color: #f92672">[</span> <span style="color: #f8f8f2">$counter</span> -lt <span style="color: #f8f8f2">$cword</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+        <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">words[$counter]</span><span style="color: #e6db74">}&quot;</span> in
+            <span style="color: #66d9ef">$(</span>__docker_compose_to_extglob <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$daemon_boolean_options</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+                <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">opt</span><span style="color: #f92672">=</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[counter]</span><span style="color: #e6db74">}</span>
+                <span style="color: #f8f8f2">top_level_options</span><span style="color: #f92672">+=(</span><span style="color: #f8f8f2">$opt</span><span style="color: #f92672">)</span>
+                <span style="color: #f8f8f2">;;</span>
+            <span style="color: #66d9ef">$(</span>__docker_compose_to_extglob <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$daemon_options_with_args</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+                <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">opt</span><span style="color: #f92672">=</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[counter]</span><span style="color: #e6db74">}</span>
+                <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">arg</span><span style="color: #f92672">=</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[++counter]</span><span style="color: #e6db74">}</span>
+                <span style="color: #f8f8f2">top_level_options</span><span style="color: #f92672">+=(</span><span style="color: #f8f8f2">$opt</span> <span style="color: #f8f8f2">$arg</span><span style="color: #f92672">)</span>
+                <span style="color: #f8f8f2">;;</span>
+            <span style="color: #66d9ef">$(</span>__docker_compose_to_extglob <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$top_level_options_with_args</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+                <span style="color: #f92672">((</span> counter++ <span style="color: #f92672">))</span>
+                <span style="color: #f8f8f2">;;</span>
+            -*<span style="color: #f92672">)</span>
+                <span style="color: #f8f8f2">;;</span>
+            *<span style="color: #f92672">)</span>
+                <span style="color: #f8f8f2">command</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">words[$counter]</span><span style="color: #e6db74">}&quot;</span>
+                <span style="color: #f8f8f2">break</span>
+                <span style="color: #f8f8f2">;;</span>
+        <span style="color: #66d9ef">esac</span>
+        <span style="color: #f92672">((</span> counter++ <span style="color: #f92672">))</span>
+    <span style="color: #66d9ef">done</span>
+
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">completions_func</span><span style="color: #f92672">=</span>_docker_compose_<span style="color: #e6db74">${</span><span style="color: #f8f8f2">command//-/_</span><span style="color: #e6db74">}</span>
+    <span style="color: #f8f8f2">declare</span> -F <span style="color: #f8f8f2">$completions_func</span> &gt;/dev/null <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">$completions_func</span>
+
+    <span style="color: #f8f8f2">eval</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$previous_extglob_setting</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span>
+<span style="color: #f92672">}</span>
+
+<span style="color: #f8f8f2">eval</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$__docker_compose_previous_extglob_setting</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f8f8f2">unset</span> __docker_compose_previous_extglob_setting
+
+<span style="color: #f8f8f2">complete</span> -F _docker_compose docker-compose docker-compose.exe
+</code></pre></div>
+
+<h5 id="function-calls_14">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _docker_compose
+   └─ __docker_compose_to_extglob
+      └─ __docker_compose_to_alternatives
+</code></pre></div>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../completion/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../completion/" class="btn btn-xs btn-link">
+        completion
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../terraform_completion/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../terraform_completion/" class="btn btn-xs btn-link">
+        terraform_completion
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/meatware/sys_bashrc.git/edit/master/docs/completion/docker-compose_completion.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/meatware/sys_bashrc.git/">Windmill Dark</a> theme by giri (noraj).</p>
+</footer>
+
+</body>
+</html>
