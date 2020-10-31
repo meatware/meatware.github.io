@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="giri">
+    <link rel="canonical" href="http://fillmein.com/modules/installer_module/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>installer_module - Sys Bashrc</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <link href="../../custom_css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Undefined. Add composure cite-about to shell script file", url: "#_top", children: [
+              {title: "Function Index", url: "#function-index" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../git_module/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../git_module/" class="btn btn-xs btn-link">
+        git_module
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../docker-compose_module/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../docker-compose_module/" class="btn btn-xs btn-link">
+        docker-compose_module
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="undefined-add-composure-cite-about-to-shell-script-file">Undefined. Add composure cite-about to shell script file</h1>
+<p><strong><em>(in /home/bsgt/sys_bashrc/modules/installer_module.sh)</em></strong></p>
+<h2 id="function-index">Function Index</h2>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">get</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">latest</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">gh</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">release</span>
+<span style="color: #ae81ff">02</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">install</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">usr</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">local</span>
+</code></pre></div>
+
+<hr />
+<h3 id="get-latest-gh-release">&gt;&gt; get-latest-gh-release():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Download &amp; extract the latest package release from gihub releases page to /tmp. Use install-usr-local() to install correct file</p>
+<p><strong><em>group</em></strong>: installers</p>
+<p><strong><em>param</em></strong>: 1: package name. This is used to search an internal dictionary for github connection details</p>
+<p><strong><em>example</em></strong>: <code>$ get-latest-gh-release ccat</code></p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> get-latest-gh-release<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">PACKAGE_NAME</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">GITHUB_USER</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">GH_INSTALL_LIB[</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">PACKAGE_NAME</span><span style="color: #e6db74">}</span><span style="color: #f8f8f2">]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> cut -d, -f1<span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">GITHUB_REPO</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">GH_INSTALL_LIB[</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">PACKAGE_NAME</span><span style="color: #e6db74">}</span><span style="color: #f8f8f2">]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> cut -d, -f2<span style="color: #66d9ef">)</span>
+
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">LNX_AMD64_RELEASE_URL</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>wget -q -nv -O- <span style="color: #e6db74">&quot;https://api.github.com/repos/</span><span style="color: #f8f8f2">$GITHUB_USER</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$GITHUB_REPO</span><span style="color: #e6db74">/releases/latest&quot;</span> <span style="color: #ae81ff">2</span>&gt;/dev/null <span style="color: #f8f8f2">|</span>  jq -r <span style="color: #e6db74">&#39;.assets[] | select(.browser_download_url | contains(&quot;linux-amd64&quot;)) | .browser_download_url&#39;</span><span style="color: #66d9ef">)</span>
+
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">REL_FILE</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>basename <span style="color: #f8f8f2">$LNX_AMD64_RELEASE_URL</span><span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;Release file is: </span><span style="color: #f8f8f2">$REL_FILE</span><span style="color: #e6db74">&quot;</span>
+
+    wget -q -nv -O <span style="color: #e6db74">&quot;/tmp/${</span><span style="color: #f8f8f2">REL_FILE</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">$LNX_AMD64_RELEASE_URL</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> ! -f <span style="color: #e6db74">&quot;/tmp/${</span><span style="color: #f8f8f2">REL_FILE</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #f8f8f2">echo</span> -e <span style="color: #e6db74">&quot;\nDidn&#39;t download </span><span style="color: #f8f8f2">$LNX_AMD64_RELEASE_URL</span><span style="color: #e6db74"> properly.  Where is /tmp/${</span><span style="color: #f8f8f2">REL_FILE</span><span style="color: #e6db74">}?&quot;</span>
+        <span style="color: #f8f8f2">exit</span> <span style="color: #ae81ff">1</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;Now extracting </span><span style="color: #f8f8f2">$REL_FILE</span><span style="color: #e6db74"> to /tmp&quot;</span>
+    <span style="color: #f8f8f2">cd</span> /tmp
+    extract <span style="color: #f8f8f2">$REL_FILE</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="install-usr-local">&gt;&gt; install-usr-local():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Move program</p>
+<p><strong><em>group</em></strong>: installers</p>
+<p><strong><em>param</em></strong>: 1: Program file to move to /usr/local/bin. This function makes it executable</p>
+<p><strong><em>example</em></strong>: <code>$ install-usr-local ${SOME_PROG}</code></p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> install-usr-local<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">MYPROG</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
+
+    sudo mv -fv <span style="color: #f8f8f2">$MYPROG</span> /usr/local/bin
+    sudo chmod -v +x /usr/local/bin/<span style="color: #66d9ef">$(</span>basename <span style="color: #f8f8f2">$MYPROG</span><span style="color: #66d9ef">)</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../git_module/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../git_module/" class="btn btn-xs btn-link">
+        git_module
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../docker-compose_module/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../docker-compose_module/" class="btn btn-xs btn-link">
+        docker-compose_module
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/meatware/sys_bashrc.git/edit/master/docs/modules/installer_module.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/meatware/sys_bashrc.git/">Windmill Dark</a> theme by giri (noraj).</p>
+</footer>
+
+</body>
+</html>

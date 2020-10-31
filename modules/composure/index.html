@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="giri">
+    <link rel="canonical" href="http://fillmein.com/modules/composure/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>composure - Sys Bashrc</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <link href="../../custom_css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Undefined. Add composure cite-about to shell script file", url: "#_top", children: [
+              {title: "Function Index", url: "#function-index" },
+              {title: "Aliases", url: "#aliases" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../extract/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../extract/" class="btn btn-xs btn-link">
+        extract
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../completion/git_completion/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../completion/git_completion/" class="btn btn-xs btn-link">
+        git_completion
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="undefined-add-composure-cite-about-to-shell-script-file">Undefined. Add composure cite-about to shell script file</h1>
+<p><strong><em>(in /home/bsgt/sys_bashrc/modules/composure.sh)</em></strong></p>
+<h2 id="function-index">Function Index</h2>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_bootstrap_composure</span>
+<span style="color: #ae81ff">02</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_get_composure_dir</span>
+<span style="color: #ae81ff">03</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_get_author_name</span>
+<span style="color: #ae81ff">04</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_composure_keywords</span>
+<span style="color: #ae81ff">05</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_letterpress</span>
+<span style="color: #ae81ff">06</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_determine_printf_cmd</span>
+<span style="color: #ae81ff">07</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_longest_function_name_length</span>
+<span style="color: #ae81ff">08</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_temp_filename_for</span>
+<span style="color: #ae81ff">09</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_prompt</span>
+<span style="color: #ae81ff">10</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_add_composure_file</span>
+<span style="color: #ae81ff">11</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_transcribe</span>
+<span style="color: #ae81ff">12</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_typeset_functions</span>
+<span style="color: #ae81ff">13</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_typeset_functions_about</span>
+<span style="color: #ae81ff">14</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_shell</span>
+<span style="color: #ae81ff">15</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_generate_metadata_functions</span>
+<span style="color: #ae81ff">16</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_list_composure_files</span>
+<span style="color: #ae81ff">17</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_load_composed_functions</span>
+<span style="color: #ae81ff">18</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_strip_trailing_whitespace</span>
+<span style="color: #ae81ff">19</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_strip_semicolons</span>
+<span style="color: #ae81ff">20</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">cite</span>
+<span style="color: #ae81ff">21</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">draft</span>
+<span style="color: #ae81ff">22</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">glossary</span>
+<span style="color: #ae81ff">23</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">metafor</span>
+<span style="color: #ae81ff">24</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">reference(){</span>
+<span style="color: #ae81ff">25</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">revise</span>
+<span style="color: #ae81ff">26</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">write</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_bootstrap_composure">&gt;&gt; _bootstrap_composure():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _bootstrap_composure<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    _generate_metadata_functions
+    _load_composed_functions
+    _determine_printf_cmd
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_get_composure_dir">&gt;&gt; _get_composure_dir():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _get_composure_dir<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$XDG_DATA_HOME</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$XDG_DATA_HOME</span><span style="color: #e6db74">/composure&quot;</span>
+    <span style="color: #66d9ef">else</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$HOME</span><span style="color: #e6db74">/.local/composure&quot;</span>
+    <span style="color: #66d9ef">fi</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_get_author_name">&gt;&gt; _get_author_name():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _get_author_name<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">typeset</span> name localname
+    <span style="color: #f8f8f2">localname</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>git --git-dir <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>_get_composure_dir<span style="color: #66d9ef">)</span><span style="color: #e6db74">/.git&quot;</span> config --get user.name<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">for</span> name in <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$GIT_AUTHOR_NAME</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$localname</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$name</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$name</span><span style="color: #e6db74">&quot;</span>
+        <span style="color: #f8f8f2">break</span>
+    <span style="color: #66d9ef">fi</span>
+    <span style="color: #66d9ef">done</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _get_author_name
+   └─ _get_composure_dir
+</code></pre></div>
+
+<hr />
+<h3 id="_composure_keywords">&gt;&gt; _composure_keywords():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _composure_keywords<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;about author example group param version&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_letterpress">&gt;&gt; _letterpress():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _letterpress<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">rightcol</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">leftcol</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">2</span><span style="color: #66d9ef">:-</span><span style="color: #f8f8f2"> </span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">leftwidth</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">3</span><span style="color: #66d9ef">:-</span><span style="color: #f8f8f2">20</span><span style="color: #e6db74">}&quot;</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$rightcol</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #66d9ef">return</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">$_printf_cmd</span> <span style="color: #e6db74">&quot;%-*s%s\n&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$leftwidth</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$leftcol</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$rightcol</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_determine_printf_cmd">&gt;&gt; _determine_printf_cmd():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _determine_printf_cmd<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$_printf_cmd</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">_printf_cmd</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">printf</span>
+    <span style="color: #f92672">[</span> -x <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>which gprintf <span style="color: #ae81ff">2</span>&gt;/dev/null<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">_printf_cmd</span><span style="color: #f92672">=</span>gprintf
+    <span style="color: #f8f8f2">export</span> _printf_cmd
+    <span style="color: #66d9ef">fi</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_longest_function_name_length">&gt;&gt; _longest_function_name_length():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _longest_function_name_length<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;BEGIN{ maxlength=0 }</span>
+<span style="color: #e6db74">    {</span>
+<span style="color: #e6db74">    for(i=1;i&lt;=NF;i++)</span>
+<span style="color: #e6db74">    if (length($i)&gt;maxlength)</span>
+<span style="color: #e6db74">    {</span>
+<span style="color: #e6db74">    maxlength=length($i)</span>
+<span style="color: #e6db74">    }</span>
+<span style="color: #e6db74">    }</span>
+<span style="color: #e6db74">    END{ print maxlength}&#39;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_temp_filename_for">&gt;&gt; _temp_filename_for():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _temp_filename_for<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">file</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>mktemp <span style="color: #e6db74">&quot;/tmp/</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">.XXXX&quot;</span><span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">command</span> rm <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span> <span style="color: #ae81ff">2</span>&gt;/dev/null     <span style="color: #75715e"># ensure file is unlinked prior to use</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_prompt">&gt;&gt; _prompt():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _prompt<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">prompt</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> result
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>_shell<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span> in
+    bash<span style="color: #f92672">)</span>
+        <span style="color: #f8f8f2">read</span> -r -e -p <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prompt</span><span style="color: #e6db74">&quot;</span> result<span style="color: #f8f8f2">;;</span>
+    *<span style="color: #f92672">)</span>
+        <span style="color: #f8f8f2">echo</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$prompt</span><span style="color: #e6db74">&quot;</span> &gt;<span style="color: #f8f8f2">&amp;</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">read</span> -r result<span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$result</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_1">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _prompt
+   └─ _shell
+</code></pre></div>
+
+<hr />
+<h3 id="_add_composure_file">&gt;&gt; _add_composure_file():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _add_composure_file<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">func</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">file</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$2</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">operation</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$3</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">comment</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">4</span><span style="color: #66d9ef">:-</span><span style="color: #e6db74">}&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">composure_dir</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>_get_composure_dir<span style="color: #66d9ef">)</span>
+
+    <span style="color: #f92672">(</span>
+    <span style="color: #66d9ef">if</span> ! <span style="color: #f8f8f2">cd</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&quot;%s\n&quot;</span> <span style="color: #e6db74">&quot;Oops! Can&#39;t find </span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74">!&quot;</span>
+        <span style="color: #66d9ef">return</span>
+    <span style="color: #66d9ef">fi</span>
+    <span style="color: #66d9ef">if</span> git rev-parse <span style="color: #ae81ff">2</span>&gt;/dev/null<span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> ! -f <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&quot;%s\n&quot;</span> <span style="color: #e6db74">&quot;Oops! Couldn&#39;t find </span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74"> to version it for you...&quot;</span>
+        <span style="color: #66d9ef">return</span>
+        <span style="color: #66d9ef">fi</span>
+        cp <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">.inc&quot;</span>
+        git add --all .
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$comment</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #f8f8f2">comment</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>_prompt <span style="color: #e6db74">&#39;Git Comment: &#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+        <span style="color: #66d9ef">fi</span>
+        git commit -m <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$operation</span><span style="color: #e6db74"> </span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">: </span><span style="color: #f8f8f2">$comment</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">fi</span>
+    <span style="color: #f92672">)</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_2">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _add_composure_file
+   ├─ _get_composure_dir
+   └─ _prompt
+      └─ _shell
+</code></pre></div>
+
+<hr />
+<h3 id="_transcribe">&gt;&gt; _transcribe():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _transcribe<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">func</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">file</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$2</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">operation</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$3</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">comment</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">4</span><span style="color: #66d9ef">:-</span><span style="color: #e6db74">}&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">composure_dir</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>_get_composure_dir<span style="color: #66d9ef">)</span>
+
+    <span style="color: #66d9ef">if</span> git --version &gt;/dev/null <span style="color: #ae81ff">2</span>&gt;<span style="color: #f8f8f2">&amp;</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -d <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        _add_composure_file <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$operation</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$comment</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">else</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$USE_COMPOSURE_REPO</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;0&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #66d9ef">return</span>    <span style="color: #75715e"># if you say so...</span>
+        <span style="color: #66d9ef">fi</span>
+        <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&quot;%s\n&quot;</span> <span style="color: #e6db74">&quot;I see you don&#39;t have a </span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74"> repo...&quot;</span>
+        <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">input</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;&#39;</span>
+        <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">valid</span><span style="color: #f92672">=</span><span style="color: #ae81ff">0</span>
+        <span style="color: #66d9ef">while</span> <span style="color: #f92672">[</span> <span style="color: #f8f8f2">$valid</span> !<span style="color: #f92672">=</span> <span style="color: #ae81ff">1</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+        <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&quot;\n%s&quot;</span> <span style="color: #e6db74">&#39;would you like to create one? y/n: &#39;</span>
+        <span style="color: #f8f8f2">read</span> -r input
+        <span style="color: #66d9ef">case</span> <span style="color: #f8f8f2">$input</span> in
+            y<span style="color: #f8f8f2">|</span>yes<span style="color: #f8f8f2">|</span>Y<span style="color: #f8f8f2">|</span>Yes<span style="color: #f8f8f2">|</span>YES<span style="color: #f92672">)</span>
+            <span style="color: #f92672">(</span>
+                <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&#39;creating git repository for your functions...&#39;</span>
+                mkdir -p <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">||</span> <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">1</span>
+                <span style="color: #f8f8f2">cd</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">||</span> <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">1</span>
+                git init
+                <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;composure stores your function definitions here&quot;</span> &gt; README.txt
+                git add README.txt
+                git commit -m <span style="color: #e6db74">&#39;initial commit&#39;</span>
+            <span style="color: #f92672">)</span>
+            _transcribe <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$operation</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$comment</span><span style="color: #e6db74">&quot;</span>
+            <span style="color: #f8f8f2">valid</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span>
+            <span style="color: #f8f8f2">;;</span>
+            n<span style="color: #f8f8f2">|</span>no<span style="color: #f8f8f2">|</span>N<span style="color: #f8f8f2">|</span>No<span style="color: #f8f8f2">|</span>NO<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&quot;%s\n&quot;</span> <span style="color: #e6db74">&quot;ok. add &#39;export USE_COMPOSURE_REPO=0&#39; to your startup script to disable this message.&quot;</span>
+            <span style="color: #f8f8f2">valid</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span>
+            <span style="color: #f8f8f2">;;</span>
+            *<span style="color: #f92672">)</span>
+            <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&quot;%s\n&quot;</span> <span style="color: #e6db74">&quot;sorry, didn&#39;t get that...&quot;</span>
+            <span style="color: #f8f8f2">;;</span>
+        <span style="color: #66d9ef">esac</span>
+        <span style="color: #66d9ef">done</span>
+     <span style="color: #66d9ef">fi</span>
+    <span style="color: #66d9ef">fi</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_3">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _transcribe
+   ├─ _get_composure_dir
+   └─ _add_composure_file
+      ├─ _get_composure_dir
+      └─ _prompt
+</code></pre></div>
+
+<hr />
+<h3 id="_typeset_functions">&gt;&gt; _typeset_functions():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _typeset_functions<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>_shell<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span> in
+    sh<span style="color: #f8f8f2">|</span>bash<span style="color: #f92672">)</span>
+        <span style="color: #f8f8f2">typeset</span> -F <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $3}&#39;</span>
+        <span style="color: #f8f8f2">;;</span>
+    *<span style="color: #f92672">)</span>
+        <span style="color: #f8f8f2">typeset</span> +f <span style="color: #f8f8f2">|</span> sed <span style="color: #e6db74">&#39;s/().*$//&#39;</span>
+        <span style="color: #f8f8f2">;;</span>
+    <span style="color: #66d9ef">esac</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_4">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _typeset_functions
+   └─ _shell
+</code></pre></div>
+
+<hr />
+<h3 id="_typeset_functions_about">&gt;&gt; _typeset_functions_about():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _typeset_functions_about<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">typeset</span> f
+    <span style="color: #66d9ef">for</span> f in <span style="color: #66d9ef">$(</span>_typeset_functions<span style="color: #66d9ef">)</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+    <span style="color: #f8f8f2">typeset</span> -f -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$f</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> grep -qE <span style="color: #e6db74">&quot;^about[[:space:]]|[[:space:]]about[[:space:]]&quot;</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">echo</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$f</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">done</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_5">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _typeset_functions_about
+   └─ _typeset_functions
+      └─ _shell
+</code></pre></div>
+
+<hr />
+<h3 id="_shell">&gt;&gt; _shell():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _shell<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">this</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>ps -o comm -p <span style="color: #f8f8f2">$$</span> <span style="color: #f8f8f2">|</span> tail -1 <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $NF}&#39;</span> <span style="color: #f8f8f2">|</span> sed <span style="color: #e6db74">&#39;s/^-*//&#39;</span><span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">this##*/</span><span style="color: #e6db74">}&quot;</span>    <span style="color: #75715e"># e.g. /bin/bash =&gt; bash</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_generate_metadata_functions">&gt;&gt; _generate_metadata_functions():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _generate_metadata_functions<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">typeset</span> f
+    <span style="color: #66d9ef">for</span> f in <span style="color: #66d9ef">$(</span>_composure_keywords<span style="color: #66d9ef">)</span>
+    <span style="color: #66d9ef">do</span>
+    <span style="color: #f8f8f2">eval</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$f</span><span style="color: #e6db74">() { :; }&quot;</span>
+    <span style="color: #66d9ef">done</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_6">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _generate_metadata_functions
+   └─ _composure_keywords
+</code></pre></div>
+
+<hr />
+<h3 id="_list_composure_files">&gt;&gt; _list_composure_files():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _list_composure_files<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">composure_dir</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>_get_composure_dir<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f92672">[</span> -d <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span> <span style="color: #f92672">&amp;&amp;</span> find <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74">&quot;</span> -maxdepth <span style="color: #ae81ff">1</span> -name <span style="color: #e6db74">&#39;*.inc&#39;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_7">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _list_composure_files
+   └─ _get_composure_dir
+</code></pre></div>
+
+<hr />
+<h3 id="_load_composed_functions">&gt;&gt; _load_composed_functions():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _load_composed_functions<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$LOAD_COMPOSED_FUNCTIONS</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;0&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #66d9ef">return</span>    <span style="color: #75715e"># if you say so...</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">typeset</span> inc
+    <span style="color: #66d9ef">for</span> inc in <span style="color: #66d9ef">$(</span>_list_composure_files<span style="color: #66d9ef">)</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+    . <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$inc</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">done</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_8">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ _load_composed_functions
+   └─ _list_composure_files
+      └─ _get_composure_dir
+</code></pre></div>
+
+<hr />
+<h3 id="_strip_trailing_whitespace">&gt;&gt; _strip_trailing_whitespace():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _strip_trailing_whitespace<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    sed -e <span style="color: #e6db74">&#39;s/ \+$//&#39;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_strip_semicolons">&gt;&gt; _strip_semicolons():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _strip_semicolons<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    sed -e <span style="color: #e6db74">&#39;s/;$//&#39;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="cite">&gt;&gt; cite():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: creates one or more meta keywords for use in your functions</p>
+<p><strong><em>param</em></strong>: one or more keywords</p>
+<p><strong><em>example</em></strong>: <code>$ cite url username</code></p>
+<p><strong><em>example</em></strong>: <code>$ url http://somewhere.com</code></p>
+<p><strong><em>example</em></strong>: <code>$ username alice</code></p>
+<p><strong><em>group</em></strong>: composure</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> cite<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+
+
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&#39;%s\n&#39;</span> <span style="color: #e6db74">&#39;missing parameter(s)&#39;</span>
+    reference cite
+    <span style="color: #66d9ef">return</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">typeset</span> keyword
+    <span style="color: #66d9ef">for</span> keyword in <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+    <span style="color: #f8f8f2">eval</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$keyword</span><span style="color: #e6db74">() { :; }&quot;</span>
+    <span style="color: #66d9ef">done</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<hr />
+<h3 id="draft">&gt;&gt; draft():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: wraps command from history into a new function, default is last command</p>
+<p><strong><em>param</em></strong>: 1: name to give function</p>
+<p><strong><em>param</em></strong>: 2: optional history line number</p>
+<p><strong><em>example</em></strong>: <code>$ ls</code></p>
+<p><strong><em>example</em></strong>: <code>$ draft list</code></p>
+<p><strong><em>example</em></strong>: <code>$ draft newfunc 1120    # wraps command at history line 1120 in newfunc()</code></p>
+<p><strong><em>group</em></strong>: composure</p>
+</blockquote>
+<p>about</p>
+<p>param</p>
+<p>example`</p>
+<p>group</p>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> draft<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">func</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">num</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$2</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&#39;%s\n&#39;</span> <span style="color: #e6db74">&#39;missing parameter(s)&#39;</span>
+    reference draft
+    <span style="color: #66d9ef">return</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">type</span> -a <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #ae81ff">2</span>&gt;/dev/null <span style="color: #f8f8f2">|</span> grep -q <span style="color: #e6db74">&#39;is.*alias&#39;</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&#39;%s\n&#39;</span> <span style="color: #e6db74">&quot;sorry, </span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">type</span> -a <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">. please choose another name.&quot;</span>
+    <span style="color: #66d9ef">return</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">typeset</span> cmd
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$num</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">lines</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">fc</span> -ln -1 <span style="color: #f8f8f2">|</span> grep -q draft <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">echo</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">||</span> <span style="color: #f8f8f2">echo</span> <span style="color: #ae81ff">1</span><span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">cmd</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">fc</span> -ln -<span style="color: #f8f8f2">$lines</span> <span style="color: #f8f8f2">|</span> head -1 <span style="color: #f8f8f2">|</span> sed <span style="color: #e6db74">&#39;s/^[[:blank:]]*//&#39;</span><span style="color: #66d9ef">)</span>
+    <span style="color: #66d9ef">else</span>
+    <span style="color: #f8f8f2">cmd</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">eval</span> <span style="color: #e6db74">&quot;history | grep &#39;^[[:blank:]]*</span><span style="color: #f8f8f2">$num</span><span style="color: #e6db74">&#39; | head -1&quot;</span> <span style="color: #f8f8f2">|</span> sed <span style="color: #e6db74">&#39;s/^[[:blank:][:digit:]]*//&#39;</span><span style="color: #66d9ef">)</span>
+    <span style="color: #66d9ef">fi</span>
+    <span style="color: #f8f8f2">eval</span> <span style="color: #e6db74">&quot;function </span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74"> {</span>
+<span style="color: #e6db74">    author &#39;</span><span style="color: #66d9ef">$(</span>_get_author_name<span style="color: #66d9ef">)</span><span style="color: #e6db74">&#39;</span>
+<span style="color: #e6db74">    </span><span style="color: #f8f8f2">$cmd</span><span style="color: #e6db74">;</span>
+<span style="color: #e6db74">}&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">file</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>_temp_filename_for draft<span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">typeset</span> -f <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> _strip_trailing_whitespace <span style="color: #f8f8f2">|</span> _strip_semicolons &gt; <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span>
+    _transcribe <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span> Draft <span style="color: #e6db74">&quot;Initial draft&quot;</span>
+    <span style="color: #f8f8f2">command</span> rm <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span> <span style="color: #ae81ff">2</span>&gt;/dev/null
+    revise <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_9">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ draft
+   ├─ _get_author_name
+   <span style="color: #f8f8f2">|</span>  └─ _get_composure_dir
+   ├─ _temp_filename_for
+   ├─ _transcribe
+   <span style="color: #f8f8f2">|</span>  ├─ _get_composure_dir
+   <span style="color: #f8f8f2">|</span>  └─ _add_composure_file
+   ├─ _strip_trailing_whitespace
+   ├─ _strip_semicolons
+   └─ revise
+      ├─ _get_composure_dir
+      ├─ _temp_filename_for
+      └─ _transcribe
+</code></pre></div>
+
+<hr />
+<h3 id="glossary">&gt;&gt; glossary():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: displays help summary for all functions, or summary for a group of functions</p>
+<p><strong><em>param</em></strong>: 1: optional, group name</p>
+<p><strong><em>example</em></strong>: <code>$ glossary</code></p>
+<p><strong><em>example</em></strong>: <code>$ glossary misc</code></p>
+<p><strong><em>group</em></strong>: composure</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> glossary<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">targetgroup</span><span style="color: #f92672">=</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">1</span><span style="color: #66d9ef">:-</span><span style="color: #e6db74">}</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">functionlist</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>_typeset_functions_about<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">maxwidth</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>_longest_function_name_length <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$functionlist</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1 + 5}&#39;</span><span style="color: #66d9ef">)</span>
+
+    <span style="color: #66d9ef">for</span> func in <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #f8f8f2">$functionlist</span><span style="color: #66d9ef">)</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #e6db74">&quot;X${</span><span style="color: #f8f8f2">targetgroup</span><span style="color: #e6db74">}X&quot;</span> !<span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;XX&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">group</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">typeset</span> -f -- <span style="color: #f8f8f2">$func</span> <span style="color: #f8f8f2">|</span> metafor group<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$group</span><span style="color: #e6db74">&quot;</span> !<span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$targetgroup</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #66d9ef">continue</span>    <span style="color: #75715e"># skip non-matching groups, if specified</span>
+        <span style="color: #66d9ef">fi</span>
+    <span style="color: #66d9ef">fi</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">about</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">typeset</span> -f -- <span style="color: #f8f8f2">$func</span> <span style="color: #f8f8f2">|</span> metafor about<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">aboutline</span><span style="color: #f92672">=</span>
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$about</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> fmt <span style="color: #f8f8f2">|</span> <span style="color: #66d9ef">while</span> <span style="color: #f8f8f2">read</span> -r aboutline<span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+        _letterpress <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$aboutline</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$maxwidth</span><span style="color: #e6db74">&quot;</span>
+        <span style="color: #f8f8f2">func</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot; &quot;</span> <span style="color: #75715e"># only display function name once</span>
+    <span style="color: #66d9ef">done</span>
+    <span style="color: #66d9ef">done</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_10">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ glossary
+   ├─ _letterpress
+   ├─ _longest_function_name_length
+   ├─ _typeset_functions_about
+   <span style="color: #f8f8f2">|</span>  └─ _typeset_functions
+   └─ metafor
+      └─ glossary
+</code></pre></div>
+
+<hr />
+<h3 id="metafor">&gt;&gt; metafor():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: prints function metadata associated with keyword</p>
+<p><strong><em>param</em></strong>: 1: meta keyword</p>
+<p><strong><em>example</em></strong>: <code>$ typeset -f glossary | metafor example</code></p>
+<p><strong><em>group</em></strong>: composure</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> metafor<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">keyword</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$keyword</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&#39;%s\n&#39;</span> <span style="color: #e6db74">&#39;missing parameter(s)&#39;</span>
+    reference metafor
+    <span style="color: #66d9ef">return</span>
+    <span style="color: #66d9ef">fi</span>
+
+
+    sed -n <span style="color: #e6db74">&quot;/</span><span style="color: #f8f8f2">$keyword</span><span style="color: #e6db74"> / s/[&#39;\&quot;;]*\$//;s/^[  ]*</span><span style="color: #f8f8f2">$keyword</span><span style="color: #e6db74"> [&#39;\&quot;]*\([^([].*\)*\$/\1/p&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_11">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ metafor
+   └─ glossary
+      ├─ _letterpress
+      ├─ _longest_function_name_length
+      ├─ _typeset_functions_about
+      └─ metafor
+</code></pre></div>
+
+<hr />
+<h3 id="reference">&gt;&gt; reference(){():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: displays apidoc help for a specific function</p>
+<p><strong><em>param</em></strong>: 1: function name</p>
+<p><strong><em>example</em></strong>: <code>$ reference revise</code></p>
+<p><strong><em>group</em></strong>: composure</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> reference<span style="color: #f92672">(){</span>
+
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">func</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&#39;%s\n&#39;</span> <span style="color: #e6db74">&#39;missing parameter(s)&#39;</span>
+    reference reference
+    <span style="color: #66d9ef">return</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">typeset</span> line
+
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">about</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">typeset</span> -f <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> metafor about<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+    _letterpress <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$about</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span>
+
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">author</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">typeset</span> -f <span style="color: #f8f8f2">$func</span> <span style="color: #f8f8f2">|</span> metafor author<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$author</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    _letterpress <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$author</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&#39;author:&#39;</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">version</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">typeset</span> -f <span style="color: #f8f8f2">$func</span> <span style="color: #f8f8f2">|</span> metafor version<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$version</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    _letterpress <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$version</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&#39;version:&#39;</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">typeset</span> -f <span style="color: #f8f8f2">$func</span> <span style="color: #f8f8f2">|</span> metafor param<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&quot;parameters:\n&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> -f <span style="color: #f8f8f2">$func</span> <span style="color: #f8f8f2">|</span> metafor param <span style="color: #f8f8f2">|</span> <span style="color: #66d9ef">while</span> <span style="color: #f8f8f2">read</span> -r line
+    <span style="color: #66d9ef">do</span>
+        _letterpress <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$line</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">done</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">typeset</span> -f <span style="color: #f8f8f2">$func</span> <span style="color: #f8f8f2">|</span> metafor example<span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&quot;examples:\n&quot;</span>
+    <span style="color: #f8f8f2">typeset</span> -f <span style="color: #f8f8f2">$func</span> <span style="color: #f8f8f2">|</span> metafor example <span style="color: #f8f8f2">|</span> <span style="color: #66d9ef">while</span> <span style="color: #f8f8f2">read</span> -r line
+    <span style="color: #66d9ef">do</span>
+        _letterpress <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$line</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">done</span>
+    <span style="color: #66d9ef">fi</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_12">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ reference<span style="color: #f92672">(){</span>
+   ├─ _letterpress
+   └─ metafor
+      └─ glossary
+</code></pre></div>
+
+<hr />
+<h3 id="revise">&gt;&gt; revise():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: loads function into editor for revision</p>
+<p><strong><em>param</em></strong>: <optional> -e: revise version stored in ENV</p>
+<p><strong><em>param</em></strong>: 1: name of function</p>
+<p><strong><em>example</em></strong>: <code>$ revise myfunction</code></p>
+<p><strong><em>example</em></strong>: <code>$ revise -e myfunction</code></p>
+<p><strong><em>example</em></strong>: <code>save a zero-length file to abort revision</code></p>
+<p><strong><em>group</em></strong>: composure</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> revise<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">source</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;git&#39;</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;-e&#39;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">source</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;env&#39;</span>
+    <span style="color: #f8f8f2">shift</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">func</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&#39;%s\n&#39;</span> <span style="color: #e6db74">&#39;missing parameter(s)&#39;</span>
+    reference revise
+    <span style="color: #66d9ef">return</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">composure_dir</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>_get_composure_dir<span style="color: #66d9ef">)</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">temp</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>_temp_filename_for revise<span style="color: #66d9ef">)</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$source</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;env&#39;</span> <span style="color: #f92672">]</span> <span style="color: #f92672">||</span> <span style="color: #f92672">[</span> ! -f <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">.inc&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">typeset</span> -f <span style="color: #f8f8f2">$func</span> &gt; <span style="color: #f8f8f2">$temp</span>
+    <span style="color: #66d9ef">else</span>
+    cat <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$composure_dir</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">.inc&quot;</span> &gt; <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$temp</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$EDITOR</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span>
+    <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">EDITOR</span><span style="color: #f92672">=</span>vi
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">$EDITOR</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$temp</span><span style="color: #e6db74">&quot;</span>
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -s <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$temp</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    <span style="color: #f8f8f2">typeset</span> <span style="color: #f8f8f2">edit</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;N&#39;</span>
+
+    . <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$temp</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">||</span> <span style="color: #f8f8f2">edit</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;Y&#39;</span>
+
+    <span style="color: #66d9ef">while</span> <span style="color: #f92672">[</span> <span style="color: #f8f8f2">$edit</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;Y&#39;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+        <span style="color: #f8f8f2">echo</span> -n <span style="color: #e6db74">&quot;Re-edit? Y/N: &quot;</span>
+        <span style="color: #f8f8f2">read</span> -r edit
+        <span style="color: #66d9ef">case</span> <span style="color: #f8f8f2">$edit</span> in
+         y<span style="color: #f8f8f2">|</span>yes<span style="color: #f8f8f2">|</span>Y<span style="color: #f8f8f2">|</span>Yes<span style="color: #f8f8f2">|</span>YES<span style="color: #f92672">)</span>
+             <span style="color: #f8f8f2">edit</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;Y&#39;</span>
+             <span style="color: #f8f8f2">$EDITOR</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$temp</span><span style="color: #e6db74">&quot;</span>
+             . <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$temp</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">edit</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;N&#39;</span><span style="color: #f8f8f2">;;</span>
+         *<span style="color: #f92672">)</span>
+             <span style="color: #f8f8f2">edit</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;N&#39;</span><span style="color: #f8f8f2">;;</span>
+        <span style="color: #66d9ef">esac</span>
+    <span style="color: #66d9ef">done</span>
+    _transcribe <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$func</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$temp</span><span style="color: #e6db74">&quot;</span> Revise
+    <span style="color: #66d9ef">else</span>
+    <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&#39;%s\n&#39;</span> <span style="color: #e6db74">&#39;zero-length file, revision aborted!&#39;</span>
+    <span style="color: #66d9ef">fi</span>
+    <span style="color: #f8f8f2">command</span> rm <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$temp</span><span style="color: #e6db74">&quot;</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+<h5 id="function-calls_13">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ revise
+   ├─ _get_composure_dir
+   ├─ _temp_filename_for
+   └─ _transcribe
+      ├─ _get_composure_dir
+      └─ _add_composure_file
+</code></pre></div>
+
+<hr />
+<h3 id="write">&gt;&gt; write():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: writes one or more composed function definitions to stdout</p>
+<p><strong><em>param</em></strong>: one or more function names</p>
+<p><strong><em>example</em></strong>: <code>$ write finddown foo</code></p>
+<p><strong><em>example</em></strong>: <code>$ write finddown</code></p>
+<p><strong><em>group</em></strong>: composure</p>
+</blockquote>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> write<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&#39;%s\n&#39;</span> <span style="color: #e6db74">&#39;missing parameter(s)&#39;</span>
+        reference write
+        <span style="color: #66d9ef">return</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;#!/usr/bin/env ${</span><span style="color: #f8f8f2">SHELL##*/</span><span style="color: #e6db74">}&quot;</span>
+
+cat <span style="color: #e6db74">&lt;&lt;END</span>
+<span style="color: #e6db74">for f in $(_composure_keywords)</span>
+<span style="color: #e6db74">do</span>
+<span style="color: #e6db74">    eval &quot;\$f() { :; }&quot;</span>
+<span style="color: #e6db74">done</span>
+<span style="color: #e6db74">unset f</span>
+<span style="color: #e6db74">END</span>
+
+    <span style="color: #f8f8f2">typeset</span> -f cite <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span>
+
+cat <span style="color: #e6db74">&lt;&lt;END</span>
+<span style="color: #e6db74">main() {</span>
+<span style="color: #e6db74">    echo &quot;edit me to do something useful!&quot;</span>
+<span style="color: #e6db74">    exit 0</span>
+<span style="color: #e6db74">}</span>
+<span style="color: #e6db74">main \$*</span>
+<span style="color: #e6db74">END</span>
+<span style="color: #f92672">}</span>
+
+_bootstrap_composure
+
+: <span style="color: #e6db74">&lt;&lt;EOF</span>
+<span style="color: #e6db74">License: The MIT License</span>
+<span style="color: #e6db74">Copyright © 2012, 2016 Erich Smith</span>
+<span style="color: #e6db74">Permission is hereby granted, free of charge, to any person obtaining a copy of this</span>
+<span style="color: #e6db74">software and associated documentation files (the &quot;Software&quot;), to deal in the Software</span>
+<span style="color: #e6db74">without restriction, including without limitation the rights to use, copy, modify,</span>
+<span style="color: #e6db74">merge, publish, distribute, sublicense, and/or sell copies of the Software, and to</span>
+<span style="color: #e6db74">permit persons to whom the Software is furnished to do so, subject to the following</span>
+<span style="color: #e6db74">conditions:</span>
+<span style="color: #e6db74">The above copyright notice and this permission notice shall be included in all copies</span>
+<span style="color: #e6db74">or substantial portions of the Software.</span>
+<span style="color: #e6db74">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,</span>
+<span style="color: #e6db74">INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A</span>
+<span style="color: #e6db74">PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT</span>
+<span style="color: #e6db74">HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF</span>
+<span style="color: #e6db74">CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE</span>
+<span style="color: #e6db74">OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span>
+<span style="color: #e6db74">EOF</span>
+
+cite about-module
+</code></pre></div>
+
+<h5 id="function-calls_14">Function Calls:</h5>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ write
+   ├─ _composure_keywords
+   └─ cite
+</code></pre></div>
+
+<h2 id="aliases">Aliases</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Alias Name</strong></th>
+<th align="center"><strong>Code</strong></th>
+<th align="right"><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>cref</strong></td>
+<td align="center"><code>reference</code></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../extract/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../extract/" class="btn btn-xs btn-link">
+        extract
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../completion/git_completion/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../completion/git_completion/" class="btn btn-xs btn-link">
+        git_completion
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/meatware/sys_bashrc.git/edit/master/docs/modules/composure.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/meatware/sys_bashrc.git/">Windmill Dark</a> theme by giri (noraj).</p>
+</footer>
+
+</body>
+</html>

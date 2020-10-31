@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="giri">
+    <link rel="canonical" href="http://fillmein.com/completion/terraform_completion/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>terraform_completion - Sys Bashrc</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <link href="../../custom_css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Undefined. Add composure cite-about to shell script file", url: "#_top", children: [
+              {title: "Function Index", url: "#function-index" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../docker-compose_completion/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../docker-compose_completion/" class="btn btn-xs btn-link">
+        docker-compose_completion
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../awscli_completion/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../awscli_completion/" class="btn btn-xs btn-link">
+        awscli_completion
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="undefined-add-composure-cite-about-to-shell-script-file">Undefined. Add composure cite-about to shell script file</h1>
+<p><strong><em>(in /home/bsgt/sys_bashrc/completions/terraform_completion.sh)</em></strong></p>
+<h2 id="function-index">Function Index</h2>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_terraform</span>
+</code></pre></div>
+
+<hr />
+<h3 id="_terraform">&gt;&gt; _terraform():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _terraform<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">local</span> cur prev words cword opts
+    _get_comp_words_by_ref -n : cur prev words cword
+    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=()</span>
+    <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;&quot;</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">cword</span><span style="color: #e6db74">}</span> -eq <span style="color: #ae81ff">1</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+
+        <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>terraform --help <span style="color: #f8f8f2">|</span> grep -E <span style="color: #e6db74">&#39;^\s\s\s\s\S&#39;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1}&#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+        <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">opts</span><span style="color: #e6db74">} --help --version&quot;</span>
+
+    <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">cword</span><span style="color: #e6db74">}</span> -gt <span style="color: #ae81ff">1</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">cword</span><span style="color: #e6db74">}</span> -eq <span style="color: #ae81ff">2</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">prev</span><span style="color: #e6db74">}</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;--help&#39;</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+
+            <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>terraform --help <span style="color: #f8f8f2">|</span> grep -E <span style="color: #e6db74">&#39;^\s\s\s\s\S&#39;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1}&#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+
+        <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[1]</span><span style="color: #e6db74">}</span> !<span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;--help&quot;</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[1]</span><span style="color: #e6db74">}</span> !<span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;--version&quot;</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[1]</span><span style="color: #e6db74">}</span> !<span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;version&quot;</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+
+            <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>terraform --help <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">words[1]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> grep -E <span style="color: #e6db74">&#39;^\s+-&#39;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1}&#39;</span> <span style="color: #f8f8f2">|</span> awk -F <span style="color: #e6db74">&#39;=&#39;</span> <span style="color: #e6db74">&#39;{ if ($0 ~ /=/) {print $1&quot;=&quot;} else {print $1} }&#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+            <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">opts</span><span style="color: #e6db74">} </span><span style="color: #66d9ef">$(</span>terraform --help <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">words[1]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> grep -E <span style="color: #e6db74">&#39;^\s\s\s\s\S&#39;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1}&#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+            <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">opts</span><span style="color: #e6db74">} --help&quot;</span>
+
+        <span style="color: #66d9ef">fi</span>
+    <span style="color: #66d9ef">fi</span>
+
+    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">opts</span><span style="color: #e6db74">}&quot;</span> -- <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">cur</span><span style="color: #e6db74">}&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${#</span><span style="color: #f8f8f2">COMPREPLY[*]</span><span style="color: #e6db74">}</span> -eq <span style="color: #ae81ff">1</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">COMPREPLY[0]</span><span style="color: #e6db74">}</span> <span style="color: #f92672">==</span> *<span style="color: #f92672">=</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+            compopt -o nospace
+        <span style="color: #66d9ef">fi</span>
+    <span style="color: #66d9ef">fi</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span>
+<span style="color: #f92672">}</span>
+
+<span style="color: #f8f8f2">complete</span> -F _terraform terraform
+</code></pre></div>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../docker-compose_completion/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../docker-compose_completion/" class="btn btn-xs btn-link">
+        docker-compose_completion
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../awscli_completion/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../awscli_completion/" class="btn btn-xs btn-link">
+        awscli_completion
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/meatware/sys_bashrc.git/edit/master/docs/completion/terraform_completion.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/meatware/sys_bashrc.git/">Windmill Dark</a> theme by giri (noraj).</p>
+</footer>
+
+</body>
+</html>

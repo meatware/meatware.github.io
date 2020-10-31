@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="giri">
+    <link rel="canonical" href="http://fillmein.com/modules/extract/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>extract - Sys Bashrc</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <link href="../../custom_css/extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Undefined. Add composure cite-about to shell script file", url: "#_top", children: [
+              {title: "Function Index", url: "#function-index" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../aws_module/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../aws_module/" class="btn btn-xs btn-link">
+        aws_module
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../composure/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../composure/" class="btn btn-xs btn-link">
+        composure
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="undefined-add-composure-cite-about-to-shell-script-file">Undefined. Add composure cite-about to shell script file</h1>
+<p><strong><em>(in /home/bsgt/sys_bashrc/modules/extract.sh)</em></strong></p>
+<h2 id="function-index">Function Index</h2>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">extract</span>
+</code></pre></div>
+
+<hr />
+<h3 id="extract">&gt;&gt; extract():</h3>
+<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> extract<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+    <span style="color: #f8f8f2">local</span> opt
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">OPTIND</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span>
+    <span style="color: #66d9ef">while</span> <span style="color: #f8f8f2">getopts</span> <span style="color: #e6db74">&quot;hv&quot;</span> opt<span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+        <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$opt</span><span style="color: #e6db74">&quot;</span> in
+            h<span style="color: #f92672">)</span>
+                cat <span style="color: #e6db74">&lt;&lt;End-Of-Usage</span>
+<span style="color: #e6db74">Usage: ${FUNCNAME[0]} [option] &lt;archives&gt;</span>
+<span style="color: #e6db74">    options:</span>
+<span style="color: #e6db74">        -h  show this message and exit</span>
+<span style="color: #e6db74">        -v  verbosely list files processed</span>
+<span style="color: #e6db74">End</span>-Of-Usage
+                <span style="color: #66d9ef">return</span>
+                <span style="color: #f8f8f2">;;</span>
+            v<span style="color: #f92672">)</span>
+                <span style="color: #f8f8f2">local</span> -r <span style="color: #f8f8f2">verbose</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;v&#39;</span>
+                <span style="color: #f8f8f2">;;</span>
+            ?<span style="color: #f92672">)</span>
+                extract -h &gt;<span style="color: #f8f8f2">&amp;</span><span style="color: #ae81ff">2</span>
+                <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">1</span>
+                <span style="color: #f8f8f2">;;</span>
+        <span style="color: #66d9ef">esac</span>
+    <span style="color: #66d9ef">done</span>
+    <span style="color: #f8f8f2">shift</span> <span style="color: #66d9ef">$((</span>OPTIND-1<span style="color: #66d9ef">))</span>
+
+    <span style="color: #f92672">[</span> <span style="color: #f8f8f2">$#</span> -eq <span style="color: #ae81ff">0</span> <span style="color: #f92672">]</span> <span style="color: #f92672">&amp;&amp;</span> extract -h <span style="color: #f92672">&amp;&amp;</span> <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">1</span>
+    <span style="color: #66d9ef">while</span> <span style="color: #f92672">[</span> <span style="color: #f8f8f2">$#</span> -gt <span style="color: #ae81ff">0</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> ! -f <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+            <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;extract: &#39;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&#39; is not a valid file&quot;</span> &gt;<span style="color: #f8f8f2">&amp;</span><span style="color: #ae81ff">2</span>
+            <span style="color: #f8f8f2">shift</span>
+            <span style="color: #66d9ef">continue</span>
+        <span style="color: #66d9ef">fi</span>
+
+        <span style="color: #f8f8f2">local</span> -r <span style="color: #f8f8f2">filename</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>basename -- <span style="color: #f8f8f2">$1</span><span style="color: #66d9ef">)</span>
+        <span style="color: #f8f8f2">local</span> -r <span style="color: #f8f8f2">filedirname</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>dirname -- <span style="color: #f8f8f2">$1</span><span style="color: #66d9ef">)</span>
+        <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">targetdirname</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>sed <span style="color: #e6db74">&#39;s/\(\.tar\.bz2$\|\.tbz$\|\.tbz2$\|\.tar\.gz$\|\.tgz$\|\.tar$\|\.tar\.xz$\|\.txz$\|\.tar\.Z$\|\.7z$\)//g&#39;</span> <span style="color: #f92672">&lt;&lt;&lt;</span> <span style="color: #f8f8f2">$filename</span><span style="color: #66d9ef">)</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$filename</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$targetdirname</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+            <span style="color: #f8f8f2">targetdirname</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;&quot;</span>
+        <span style="color: #66d9ef">else</span>
+            mkdir -v <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$filedirname</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$targetdirname</span><span style="color: #e6db74">&quot;</span>
+        <span style="color: #66d9ef">fi</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -f <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+            <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> in
+                *.tar.bz2<span style="color: #f8f8f2">|</span>*.tbz<span style="color: #f8f8f2">|</span>*.tbz2<span style="color: #f92672">)</span> tar <span style="color: #e6db74">&quot;x${</span><span style="color: #f8f8f2">verbose</span><span style="color: #e6db74">}jf&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> -C <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$filedirname</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$targetdirname</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.tar.gz<span style="color: #f8f8f2">|</span>*.tgz<span style="color: #f92672">)</span> tar <span style="color: #e6db74">&quot;x${</span><span style="color: #f8f8f2">verbose</span><span style="color: #e6db74">}zf&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> -C <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$filedirname</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$targetdirname</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.tar.xz<span style="color: #f8f8f2">|</span>*.txz<span style="color: #f92672">)</span> tar <span style="color: #e6db74">&quot;x${</span><span style="color: #f8f8f2">verbose</span><span style="color: #e6db74">}Jf&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> -C <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$filedirname</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$targetdirname</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.tar.Z<span style="color: #f92672">)</span> tar <span style="color: #e6db74">&quot;x${</span><span style="color: #f8f8f2">verbose</span><span style="color: #e6db74">}Zf&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> -C <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$filedirname</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$targetdirname</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.bz2<span style="color: #f92672">)</span> bunzip2 <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.deb<span style="color: #f92672">)</span> dpkg-deb -x<span style="color: #e6db74">${</span><span style="color: #f8f8f2">verbose</span><span style="color: #e6db74">}</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">1:0</span><span style="color: #66d9ef">:-</span><span style="color: #f8f8f2">4</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.pax.gz<span style="color: #f92672">)</span> gunzip <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">set</span> -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">1:0</span><span style="color: #66d9ef">:-</span><span style="color: #f8f8f2">3</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.gz<span style="color: #f92672">)</span> gunzip <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.pax<span style="color: #f92672">)</span> pax -r -f <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.pkg<span style="color: #f92672">)</span> pkgutil --expand <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">1:0</span><span style="color: #66d9ef">:-</span><span style="color: #f8f8f2">4</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.rar<span style="color: #f92672">)</span> unrar x <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.rpm<span style="color: #f92672">)</span> rpm2cpio <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> cpio -idm<span style="color: #e6db74">${</span><span style="color: #f8f8f2">verbose</span><span style="color: #e6db74">}</span> <span style="color: #f8f8f2">;;</span>
+                *.tar<span style="color: #f92672">)</span> tar <span style="color: #e6db74">&quot;x${</span><span style="color: #f8f8f2">verbose</span><span style="color: #e6db74">}f&quot;</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> -C <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$filedirname</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$targetdirname</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.xz<span style="color: #f92672">)</span> xz --decompress <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.zip<span style="color: #f8f8f2">|</span>*.war<span style="color: #f8f8f2">|</span>*.jar<span style="color: #f92672">)</span> unzip <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.Z<span style="color: #f92672">)</span> uncompress <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *.7z<span style="color: #f92672">)</span> 7za x <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">;;</span>
+                *<span style="color: #f92672">)</span> <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;&#39;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&#39; cannot be extracted via extract&quot;</span> &gt;<span style="color: #f8f8f2">&amp;</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">;;</span>
+            <span style="color: #66d9ef">esac</span>
+        <span style="color: #66d9ef">fi</span>
+
+        <span style="color: #f8f8f2">shift</span>
+    <span style="color: #66d9ef">done</span>
+<span style="color: #f92672">}</span>
+</code></pre></div>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../aws_module/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../aws_module/" class="btn btn-xs btn-link">
+        aws_module
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../composure/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../composure/" class="btn btn-xs btn-link">
+        composure
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/meatware/sys_bashrc.git/edit/master/docs/modules/extract.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/meatware/sys_bashrc.git/">Windmill Dark</a> theme by giri (noraj).</p>
+</footer>
+
+</body>
+</html>
