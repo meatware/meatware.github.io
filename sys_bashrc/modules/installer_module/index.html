@@ -86,10 +86,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="install-additional-packages">Install additional packages</h1>
 <p><strong><em>(in /home/bsgt/sys_bashrc/modules/installer_module.sh)</em></strong></p>
 <h2 id="function-index">Function Index</h2>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">get</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">latest</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">gh</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">release</span>
-<span style="color: #ae81ff">02</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">install</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">usr</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">local</span>
-</code></pre></div>
-
+<pre><code class="language-python">01 - get-latest-gh-release
+02 - install-usr-local
+</code></pre>
 <hr />
 <h3 id="get-latest-gh-release">&gt;&gt; get-latest-gh-release():</h3>
 <blockquote>
@@ -98,29 +97,29 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>param</em></strong>: 1: package name. This is used to search an internal dictionary for github connection details</p>
 <p><strong><em>example</em></strong>: <code>$ get-latest-gh-release ccat</code></p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> get-latest-gh-release<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function get-latest-gh-release() {
 
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">PACKAGE_NAME</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">GITHUB_USER</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">GH_INSTALL_LIB[</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">PACKAGE_NAME</span><span style="color: #e6db74">}</span><span style="color: #f8f8f2">]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> cut -d, -f1<span style="color: #66d9ef">)</span>
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">GITHUB_REPO</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">GH_INSTALL_LIB[</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">PACKAGE_NAME</span><span style="color: #e6db74">}</span><span style="color: #f8f8f2">]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> cut -d, -f2<span style="color: #66d9ef">)</span>
+    local PACKAGE_NAME=$1
+    local GITHUB_USER=$(echo &quot;${GH_INSTALL_LIB[${PACKAGE_NAME}]}&quot; | cut -d, -f1)
+    local GITHUB_REPO=$(echo &quot;${GH_INSTALL_LIB[${PACKAGE_NAME}]}&quot; | cut -d, -f2)
 
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">LNX_AMD64_RELEASE_URL</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>wget -q -nv -O- <span style="color: #e6db74">&quot;https://api.github.com/repos/</span><span style="color: #f8f8f2">$GITHUB_USER</span><span style="color: #e6db74">/</span><span style="color: #f8f8f2">$GITHUB_REPO</span><span style="color: #e6db74">/releases/latest&quot;</span> <span style="color: #ae81ff">2</span>&gt;/dev/null <span style="color: #f8f8f2">|</span>  jq -r <span style="color: #e6db74">&#39;.assets[] | select(.browser_download_url | contains(&quot;linux-amd64&quot;)) | .browser_download_url&#39;</span><span style="color: #66d9ef">)</span>
+    local LNX_AMD64_RELEASE_URL=$(wget -q -nv -O- &quot;https://api.github.com/repos/$GITHUB_USER/$GITHUB_REPO/releases/latest&quot; 2&gt;/dev/null |  jq -r '.assets[] | select(.browser_download_url | contains(&quot;linux-amd64&quot;)) | .browser_download_url')
 
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">REL_FILE</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>basename <span style="color: #f8f8f2">$LNX_AMD64_RELEASE_URL</span><span style="color: #66d9ef">)</span>
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;Release file is: </span><span style="color: #f8f8f2">$REL_FILE</span><span style="color: #e6db74">&quot;</span>
+    local REL_FILE=$(basename $LNX_AMD64_RELEASE_URL)
+    echo &quot;Release file is: $REL_FILE&quot;
 
-    wget -q -nv -O <span style="color: #e6db74">&quot;/tmp/${</span><span style="color: #f8f8f2">REL_FILE</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">$LNX_AMD64_RELEASE_URL</span>
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> ! -f <span style="color: #e6db74">&quot;/tmp/${</span><span style="color: #f8f8f2">REL_FILE</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        <span style="color: #f8f8f2">echo</span> -e <span style="color: #e6db74">&quot;\nDidn&#39;t download </span><span style="color: #f8f8f2">$LNX_AMD64_RELEASE_URL</span><span style="color: #e6db74"> properly.  Where is /tmp/${</span><span style="color: #f8f8f2">REL_FILE</span><span style="color: #e6db74">}?&quot;</span>
-        <span style="color: #f8f8f2">exit</span> <span style="color: #ae81ff">1</span>
-    <span style="color: #66d9ef">fi</span>
+    wget -q -nv -O &quot;/tmp/${REL_FILE}&quot; $LNX_AMD64_RELEASE_URL
+    if [ ! -f &quot;/tmp/${REL_FILE}&quot; ]; then
+        echo -e &quot;\nDidn't download $LNX_AMD64_RELEASE_URL properly.  Where is /tmp/${REL_FILE}?&quot;
+        exit 1
+    fi
 
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;Now extracting </span><span style="color: #f8f8f2">$REL_FILE</span><span style="color: #e6db74"> to /tmp&quot;</span>
-    <span style="color: #f8f8f2">cd</span> /tmp
-    extract <span style="color: #f8f8f2">$REL_FILE</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    echo &quot;Now extracting $REL_FILE to /tmp&quot;
+    cd /tmp
+    extract $REL_FILE
+}
 
+</code></pre>
 <hr />
 <h3 id="install-usr-local">&gt;&gt; install-usr-local():</h3>
 <blockquote>
@@ -129,14 +128,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>param</em></strong>: 1: Program file to move to /usr/local/bin. This function makes it executable</p>
 <p><strong><em>example</em></strong>: <code>$ install-usr-local ${SOME_PROG}</code></p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> install-usr-local<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function install-usr-local() {
 
-    <span style="color: #f8f8f2">MYPROG</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
+    MYPROG=$1
 
-    sudo mv -fv <span style="color: #f8f8f2">$MYPROG</span> /usr/local/bin
-    sudo chmod -v +x /usr/local/bin/<span style="color: #66d9ef">$(</span>basename <span style="color: #f8f8f2">$MYPROG</span><span style="color: #66d9ef">)</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    sudo mv -fv $MYPROG /usr/local/bin
+    sudo chmod -v +x /usr/local/bin/$(basename $MYPROG)
+}
+
+</code></pre>
 
   <br>
     

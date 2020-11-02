@@ -113,13 +113,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <ul class="wm-toctree">
       <li class="wm-toc-li wm-toc-lev2 "><a href="aliases/git_aliases/" class="wm-article-link wm-toc-text">git_aliases</a>
 </li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="aliases/_core-bash_aliases/" class="wm-article-link wm-toc-text">_core-bash_aliases</a>
+</li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="aliases/docker_aliases/" class="wm-article-link wm-toc-text">docker_aliases</a>
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="aliases/kubectl_aliases/" class="wm-article-link wm-toc-text">kubectl_aliases</a>
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="aliases/docker-compose_aliases/" class="wm-article-link wm-toc-text">docker-compose_aliases</a>
-</li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="aliases/_bash_aliases/" class="wm-article-link wm-toc-text">_bash_aliases</a>
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="aliases/terraform_aliases/" class="wm-article-link wm-toc-text">terraform_aliases</a>
 </li>
@@ -160,6 +160,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
       <li class="wm-toc-li wm-toc-lev2 "><a href="modules/history_module/" class="wm-article-link wm-toc-text">history_module</a>
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="modules/base_module/" class="wm-article-link wm-toc-text">base_module</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="modules/ssh_helper_module/" class="wm-article-link wm-toc-text">ssh_helper_module</a>
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="modules/docker-compose_module/" class="wm-article-link wm-toc-text">docker-compose_module</a>
 </li>
@@ -225,12 +227,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Slimmed down sysadmin .bashrc that should hopefully have minimal system dependencies.</p>
 <h2 id="installation">Installation</h2>
 <h3 id="clone-repo-activate-via-symlink-and-backup-your-pre-existing-bashrc">Clone repo, activate via symlink and backup your pre-existing .bashrc</h3>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>cd
+<pre><code>cd
 git clone https://github.com/meatware/sys_bashrc.git
 mv .bashrc .your_old_bashrc
 ln -fs ~/sys_bashrc/_bashrc ~/.bashrc
 source ~/.bashrc
-</code></pre></div>
+</code></pre>
 
   <br>
     
@@ -269,5 +271,5 @@ Edit on GitHub</a>
 </html>
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-10-31 12:41:54.152510+00:00
+Build Date UTC : 2020-11-02 17:46:22.510646+00:00
 -->

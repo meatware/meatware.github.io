@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="giri">
-    <link rel="canonical" href="http://fillmein.com/aliases/_bash_aliases/">
+    <link rel="canonical" href="http://fillmein.com/aliases/_core-bash_aliases/">
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>_bash_aliases - Sys Bashrc</title>
+    <title>_core-bash_aliases - Sys Bashrc</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -63,20 +63,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../terraform_aliases/" class="btn btn-xs btn-default pull-right">
+      <a href="../docker_aliases/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../terraform_aliases/" class="btn btn-xs btn-link">
-        terraform_aliases
+      <a href="../docker_aliases/" class="btn btn-xs btn-link">
+        docker_aliases
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../docker-compose_aliases/" class="btn btn-xs btn-default pull-left">
+      <a href="../git_aliases/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../docker-compose_aliases/" class="btn btn-xs btn-link">
-        docker-compose_aliases
+        Previous</a><a href="../git_aliases/" class="btn btn-xs btn-link">
+        git_aliases
       </a>
     </div>
     
@@ -85,13 +85,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h1 id="core-bash-aliases">Core BASH Aliases</h1>
-<p><strong><em>(in /home/bsgt/sys_bashrc/aliases/_bash_aliases.sh)</em></strong></p>
+<p><strong><em>(in /home/bsgt/sys_bashrc/aliases/_core-bash_aliases.sh)</em></strong></p>
 <h2 id="function-index">Function Index</h2>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">check_alias_clashes</span>
-<span style="color: #ae81ff">02</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">mkcd</span>
-<span style="color: #ae81ff">03</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">up</span>
-</code></pre></div>
-
+<pre><code class="language-python">01 - check_alias_clashes
+02 - mkcd
+03 - up
+</code></pre>
 <hr />
 <h3 id="check_alias_clashes">&gt;&gt; check_alias_clashes():</h3>
 <blockquote>
@@ -99,19 +98,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>group</em></strong>: aliases</p>
 <p><strong><em>example</em></strong>: <code>$ check_alias_clashes</code></p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> check_alias_clashes<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function check_alias_clashes() {
 
-    <span style="color: #f8f8f2">alias</span> <span style="color: #f8f8f2">|</span> sed <span style="color: #e6db74">&#39;s/^[^ ]* *\|=.*$//g&#39;</span> <span style="color: #f8f8f2">|</span> <span style="color: #66d9ef">while</span> <span style="color: #f8f8f2">read</span> a<span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
-    <span style="color: #f8f8f2">printf</span> <span style="color: #e6db74">&quot;%20.20s : %s\n&quot;</span> <span style="color: #f8f8f2">$a</span> <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">type</span> -ta <span style="color: #f8f8f2">$a</span> <span style="color: #f8f8f2">|</span> tr <span style="color: #e6db74">&#39;\n&#39;</span> <span style="color: #e6db74">&#39; &#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
-    <span style="color: #66d9ef">done</span> <span style="color: #f8f8f2">|</span> awk -F: <span style="color: #e6db74">&#39;$2 ~ /file/&#39;</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    alias | sed 's/^[^ ]* *\|=.*$//g' | while read a; do
+    printf &quot;%20.20s : %s\n&quot; $a &quot;$(type -ta $a | tr '\n' ' ')&quot;
+    done | awk -F: '$2 ~ /file/'
+}
 
+</code></pre>
 <h5 id="function-calls">Function Calls:</h5>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ check_alias_clashes
+<pre><code class="language-bash">└─ check_alias_clashes
    └─ up
-</code></pre></div>
-
+</code></pre>
 <hr />
 <h3 id="mkcd">&gt;&gt; mkcd():</h3>
 <blockquote>
@@ -120,17 +118,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>param</em></strong>: 1: Name of the directory to create &amp; enter</p>
 <p><strong><em>example</em></strong>: <code>mkcd my_new_dir</code></p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> mkcd<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function mkcd() {
 
-    mkdir -p <span style="color: #f8f8f2">$1;</span> <span style="color: #f8f8f2">cd</span> <span style="color: #f8f8f2">$1</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    mkdir -p $1; cd $1
+}
 
+</code></pre>
 <h5 id="function-calls_1">Function Calls:</h5>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ mkcd
+<pre><code class="language-bash">└─ mkcd
    └─ up
-</code></pre></div>
-
+</code></pre>
 <hr />
 <h3 id="up">&gt;&gt; up():</h3>
 <blockquote>
@@ -139,22 +136,22 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>param</em></strong>: 1: Integer corresponding to number of directories to go up.</p>
 <p><strong><em>example</em></strong>: <code>$ up 3</code></p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> up<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function up() {
 
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">d</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;&quot;</span>
-    <span style="color: #f8f8f2">limit</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
-    <span style="color: #66d9ef">for</span> <span style="color: #f92672">((</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1</span> <span style="color: #f8f8f2">;</span> i &lt;<span style="color: #f92672">=</span> limit <span style="color: #f8f8f2">;</span> i++<span style="color: #f92672">))</span>
-        <span style="color: #66d9ef">do</span>
-            <span style="color: #f8f8f2">d</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$d</span>/..
-        <span style="color: #66d9ef">done</span>
-    <span style="color: #f8f8f2">d</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #f8f8f2">$d</span> <span style="color: #f8f8f2">|</span> sed <span style="color: #e6db74">&#39;s/^\///&#39;</span><span style="color: #66d9ef">)</span>
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$d</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        <span style="color: #f8f8f2">d</span><span style="color: #f92672">=</span>..
-    <span style="color: #66d9ef">fi</span>
-    <span style="color: #f8f8f2">cd</span> <span style="color: #f8f8f2">$d</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    local d=&quot;&quot;
+    limit=$1
+    for ((i=1 ; i &lt;= limit ; i++))
+        do
+            d=$d/..
+        done
+    d=$(echo $d | sed 's/^\///')
+    if [ -z &quot;$d&quot; ]; then
+        d=..
+    fi
+    cd $d
+}
 
+</code></pre>
 <h2 id="aliases">Aliases</h2>
 <table>
 <thead>
@@ -172,8 +169,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </tr>
 <tr>
 <td align="left"><strong>ls</strong></td>
-<td align="center"><code>ls -ah --color=always</code></td>
-<td align="right"></td>
+<td align="center"><code>ls -ah --color=always'</code></td>
+<td align="right">ls always has --color switched on &amp; shows all files</td>
 </tr>
 <tr>
 <td align="left"><strong>qs</strong></td>
@@ -296,11 +293,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <td align="right"></td>
 </tr>
 <tr>
-<td align="left"><strong>quick-ssh</strong></td>
-<td align="center"><code>ssh -Y -C -c blowfish-cbc,arcfour username@yourhost.com'</code></td>
-<td align="right">Use faster ssh ciphers</td>
-</tr>
-<tr>
 <td align="left"><strong>edbash</strong></td>
 <td align="center"><code>gedit ~/.bashrc ~/sys_bashrc/internal/*.sh &amp;</code></td>
 <td align="right"></td>
@@ -334,20 +326,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../terraform_aliases/" class="btn btn-xs btn-default pull-right">
+      <a href="../docker_aliases/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../terraform_aliases/" class="btn btn-xs btn-link">
-        terraform_aliases
+      <a href="../docker_aliases/" class="btn btn-xs btn-link">
+        docker_aliases
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../docker-compose_aliases/" class="btn btn-xs btn-default pull-left">
+      <a href="../git_aliases/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../docker-compose_aliases/" class="btn btn-xs btn-link">
-        docker-compose_aliases
+        Previous</a><a href="../git_aliases/" class="btn btn-xs btn-link">
+        git_aliases
       </a>
     </div>
     
@@ -358,7 +350,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <footer class="col-md-12 wm-page-content">
       <p>
-        <a href="https://github.com/meatware/sys_bashrc.git/edit/master/docs/aliases/_bash_aliases.md"><i class="fa fa-github"></i>
+        <a href="https://github.com/meatware/sys_bashrc.git/edit/master/docs/aliases/_core-bash_aliases.md"><i class="fa fa-github"></i>
 Edit on GitHub</a>
       </p>
   <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/meatware/sys_bashrc.git/">Windmill Dark</a> theme by giri (noraj).</p>

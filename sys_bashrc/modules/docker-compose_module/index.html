@@ -72,10 +72,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../base_module/" class="btn btn-xs btn-default pull-left">
+      <a href="../ssh_helper_module/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../base_module/" class="btn btn-xs btn-link">
-        base_module
+        Previous</a><a href="../ssh_helper_module/" class="btn btn-xs btn-link">
+        ssh_helper_module
       </a>
     </div>
     
@@ -86,9 +86,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="helper-functions-for-using-docker-compose">Helper functions for using docker-compose</h1>
 <p><strong><em>(in /home/bsgt/sys_bashrc/modules/docker-compose_module.sh)</em></strong></p>
 <h2 id="function-index">Function Index</h2>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">docker</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">compose</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">fresh</span>
-</code></pre></div>
-
+<pre><code class="language-python">01 - docker-compose-fresh
+</code></pre>
 <hr />
 <h3 id="docker-compose-fresh">&gt;&gt; docker-compose-fresh():</h3>
 <blockquote>
@@ -97,20 +96,21 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>param</em></strong>: 1: name of the docker-compose.yaml file to use (optional). Default: docker-compose.yaml</p>
 <p><strong><em>example</em></strong>: <code>docker-compose-fresh docker-compose-foo.yaml</code></p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> docker-compose-fresh<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function docker-compose-fresh() {
 
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">DCO_FILE_PARAM</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;&quot;</span>
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;Using docker-compose file: </span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
-        <span style="color: #f8f8f2">DCO_FILE_PARAM</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;--file </span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
-    <span style="color: #66d9ef">fi</span>
+    local DCO_FILE_PARAM=&quot;&quot;
+    if [ -n &quot;$1&quot; ]; then
+        echo &quot;Using docker-compose file: $1&quot;
+        DCO_FILE_PARAM=&quot;--file $1&quot;
+    fi
 
-    docker-compose <span style="color: #f8f8f2">$DCO_FILE_PARAM</span> stop
-    docker-compose <span style="color: #f8f8f2">$DCO_FILE_PARAM</span> rm -f
-    docker-compose <span style="color: #f8f8f2">$DCO_FILE_PARAM</span> up -d
-    docker-compose <span style="color: #f8f8f2">$DCO_FILE_PARAM</span> logs -f --tail <span style="color: #ae81ff">100</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    docker-compose $DCO_FILE_PARAM stop
+    docker-compose $DCO_FILE_PARAM rm -f
+    docker-compose $DCO_FILE_PARAM up -d
+    docker-compose $DCO_FILE_PARAM logs -f --tail 100
+}
+
+</code></pre>
 
   <br>
     
@@ -133,10 +133,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href="../base_module/" class="btn btn-xs btn-default pull-left">
+      <a href="../ssh_helper_module/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../base_module/" class="btn btn-xs btn-link">
-        base_module
+        Previous</a><a href="../ssh_helper_module/" class="btn btn-xs btn-link">
+        ssh_helper_module
       </a>
     </div>
     

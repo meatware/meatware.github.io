@@ -86,49 +86,49 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="terraform-completions">Terraform completions</h1>
 <p><strong><em>(in /home/bsgt/sys_bashrc/completions/terraform_completion.sh)</em></strong></p>
 <h2 id="function-index">Function Index</h2>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">_terraform</span>
-</code></pre></div>
-
+<pre><code class="language-python">01 - _terraform
+</code></pre>
 <hr />
 <h3 id="_terraform">&gt;&gt; _terraform():</h3>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> _terraform<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">local</span> cur prev words cword opts
+<pre><code class="language-bash">function _terraform() {
+    local cur prev words cword opts
     _get_comp_words_by_ref -n : cur prev words cword
-    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=()</span>
-    <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;&quot;</span>
+    COMPREPLY=()
+    opts=&quot;&quot;
 
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">cword</span><span style="color: #e6db74">}</span> -eq <span style="color: #ae81ff">1</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    if [[ ${cword} -eq 1 ]] ; then
 
-        <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>terraform --help <span style="color: #f8f8f2">|</span> grep -E <span style="color: #e6db74">&#39;^\s\s\s\s\S&#39;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1}&#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
-        <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">opts</span><span style="color: #e6db74">} --help --version&quot;</span>
+        opts=&quot;$(terraform --help | grep -E '^\s\s\s\s\S' | awk '{print $1}')&quot;
+        opts=&quot;${opts} --help --version&quot;
 
-    <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">cword</span><span style="color: #e6db74">}</span> -gt <span style="color: #ae81ff">1</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    elif [[ ${cword} -gt 1 ]] ; then
 
-        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">cword</span><span style="color: #e6db74">}</span> -eq <span style="color: #ae81ff">2</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">prev</span><span style="color: #e6db74">}</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;--help&#39;</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        if [[ ${cword} -eq 2 &amp;&amp; ${prev} == '--help' ]] ; then
 
-            <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>terraform --help <span style="color: #f8f8f2">|</span> grep -E <span style="color: #e6db74">&#39;^\s\s\s\s\S&#39;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1}&#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
+            opts=&quot;$(terraform --help | grep -E '^\s\s\s\s\S' | awk '{print $1}')&quot;
 
-        <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[1]</span><span style="color: #e6db74">}</span> !<span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;--help&quot;</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[1]</span><span style="color: #e6db74">}</span> !<span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;--version&quot;</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">words[1]</span><span style="color: #e6db74">}</span> !<span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;version&quot;</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+        elif [[ ${words[1]} != &quot;--help&quot; &amp;&amp; ${words[1]} != &quot;--version&quot; &amp;&amp; ${words[1]} != &quot;version&quot; ]] ; then
 
-            <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>terraform --help <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">words[1]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> grep -E <span style="color: #e6db74">&#39;^\s+-&#39;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1}&#39;</span> <span style="color: #f8f8f2">|</span> awk -F <span style="color: #e6db74">&#39;=&#39;</span> <span style="color: #e6db74">&#39;{ if ($0 ~ /=/) {print $1&quot;=&quot;} else {print $1} }&#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
-            <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">opts</span><span style="color: #e6db74">} </span><span style="color: #66d9ef">$(</span>terraform --help <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">words[1]</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> grep -E <span style="color: #e6db74">&#39;^\s\s\s\s\S&#39;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1}&#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
-            <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">opts</span><span style="color: #e6db74">} --help&quot;</span>
+            opts=&quot;$(terraform --help &quot;${words[1]}&quot; | grep -E '^\s+-' | awk '{print $1}' | awk -F '=' '{ if ($0 ~ /=/) {print $1&quot;=&quot;} else {print $1} }')&quot;
+            opts=&quot;${opts} $(terraform --help &quot;${words[1]}&quot; | grep -E '^\s\s\s\s\S' | awk '{print $1}')&quot;
+            opts=&quot;${opts} --help&quot;
 
-        <span style="color: #66d9ef">fi</span>
-    <span style="color: #66d9ef">fi</span>
+        fi
+    fi
 
-    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">opts</span><span style="color: #e6db74">}&quot;</span> -- <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">cur</span><span style="color: #e6db74">}&quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
+    COMPREPLY=( $(compgen -W &quot;${opts}&quot; -- &quot;${cur}&quot;) )
 
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${#</span><span style="color: #f8f8f2">COMPREPLY[*]</span><span style="color: #e6db74">}</span> -eq <span style="color: #ae81ff">1</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">COMPREPLY[0]</span><span style="color: #e6db74">}</span> <span style="color: #f92672">==</span> *<span style="color: #f92672">=</span> <span style="color: #f92672">]]</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+    if [[ ${#COMPREPLY[*]} -eq 1 ]] ; then
+        if [[ ${COMPREPLY[0]} == *= ]] ; then
             compopt -o nospace
-        <span style="color: #66d9ef">fi</span>
-    <span style="color: #66d9ef">fi</span>
-    <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span>
-<span style="color: #f92672">}</span>
+        fi
+    fi
+    return 0
+}
 
-<span style="color: #f8f8f2">complete</span> -F _terraform terraform
-</code></pre></div>
+complete -F _terraform terraform
+
+</code></pre>
 
   <br>
     

@@ -86,205 +86,200 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="aws-helper-functions">AWS helper functions</h1>
 <p><strong><em>(in /home/bsgt/sys_bashrc/modules/aws_module.sh)</em></strong></p>
 <h2 id="function-index">Function Index</h2>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">awskeys</span>
-<span style="color: #ae81ff">02</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__awskeys_help</span>
-<span style="color: #ae81ff">03</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__awskeys_region</span>
-<span style="color: #ae81ff">04</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__awskeys_get</span>
-<span style="color: #ae81ff">05</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__awskeys_list</span>
-<span style="color: #ae81ff">06</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__awskeys_show</span>
-<span style="color: #ae81ff">07</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__awskeys_export</span>
-<span style="color: #ae81ff">08</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__awskeys_unset</span>
-<span style="color: #ae81ff">09</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">__awskeys_comp</span>
-</code></pre></div>
-
+<pre><code class="language-python">01 - awskeys
+02 - __awskeys_help
+03 - __awskeys_region
+04 - __awskeys_get
+05 - __awskeys_list
+06 - __awskeys_show
+07 - __awskeys_export
+08 - __awskeys_unset
+09 - __awskeys_comp
+</code></pre>
 <hr />
 <h3 id="awskeys">&gt;&gt; awskeys():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: helper function for AWS credentials file</p>
 <p><strong><em>group</em></strong>: aws</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> awskeys <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function awskeys {
 
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> ! -f <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">AWS_SHARED_CREDENTIALS_FILE</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;AWS credentials file not found&quot;</span>
-        <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">1</span>
-    <span style="color: #66d9ef">fi</span>
+    if [[ ! -f &quot;${AWS_SHARED_CREDENTIALS_FILE}&quot; ]]; then
+        echo &quot;AWS credentials file not found&quot;
+        return 1
+    fi
 
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #f8f8f2">$#</span> -eq <span style="color: #ae81ff">1</span> <span style="color: #f92672">]]</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;list&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        __awskeys_list <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$2</span><span style="color: #e6db74">&quot;</span>
-    <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[[</span> <span style="color: #f8f8f2">$#</span> -eq <span style="color: #ae81ff">1</span> <span style="color: #f92672">]]</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;unset&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        __awskeys_unset <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$2</span><span style="color: #e6db74">&quot;</span>
-    <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[[</span> <span style="color: #f8f8f2">$#</span> -eq <span style="color: #ae81ff">2</span> <span style="color: #f92672">]]</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;show&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        __awskeys_show <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$2</span><span style="color: #e6db74">&quot;</span>
-    <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[[</span> <span style="color: #f8f8f2">$#</span> -eq <span style="color: #ae81ff">2</span> <span style="color: #f92672">]]</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;export&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        __awskeys_export <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$2</span><span style="color: #e6db74">&quot;</span>
-    <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[[</span> <span style="color: #f8f8f2">$#</span> -eq <span style="color: #ae81ff">2</span> <span style="color: #f92672">]]</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f92672">[[</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;region&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        __awskeys_region <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$2</span><span style="color: #e6db74">&quot;</span>
-    <span style="color: #66d9ef">else</span>
+    if [[ $# -eq 1 ]] &amp;&amp; [[ &quot;$1&quot; = &quot;list&quot; ]]; then
+        __awskeys_list &quot;$2&quot;
+    elif [[ $# -eq 1 ]] &amp;&amp; [[ &quot;$1&quot; = &quot;unset&quot; ]]; then
+        __awskeys_unset &quot;$2&quot;
+    elif [[ $# -eq 2 ]] &amp;&amp; [[ &quot;$1&quot; = &quot;show&quot; ]]; then
+        __awskeys_show &quot;$2&quot;
+    elif [[ $# -eq 2 ]] &amp;&amp; [[ &quot;$1&quot; = &quot;export&quot; ]]; then
+        __awskeys_export &quot;$2&quot;
+    elif [[ $# -eq 2 ]] &amp;&amp; [[ &quot;$1&quot; = &quot;region&quot; ]]; then
+        __awskeys_region &quot;$2&quot;
+    else
         __awskeys_help
-    <span style="color: #66d9ef">fi</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    fi
+}
 
+</code></pre>
 <h5 id="function-calls">Function Calls:</h5>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ awskeys
+<pre><code class="language-bash">└─ awskeys
    ├─ __awskeys_region
    ├─ __awskeys_list
    ├─ __awskeys_show
-   <span style="color: #f8f8f2">|</span>  └─ __awskeys_get
+   |  └─ __awskeys_get
    ├─ __awskeys_export
-   <span style="color: #f8f8f2">|</span>  ├─ __awskeys_get
-   <span style="color: #f8f8f2">|</span>  └─ __awskeys_list
+   |  ├─ __awskeys_get
+   |  └─ __awskeys_list
    └─ __awskeys_unset
-</code></pre></div>
-
+</code></pre>
 <hr />
 <h3 id="__awskeys_help">&gt;&gt; __awskeys_help():</h3>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __awskeys_help <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">echo</span> -e <span style="color: #e6db74">&quot;Usage: awskeys [COMMAND] [profile]\n&quot;</span>
-    <span style="color: #f8f8f2">echo</span> -e <span style="color: #e6db74">&quot;Helper to AWS credentials file.\n&quot;</span>
-    <span style="color: #f8f8f2">echo</span> -e <span style="color: #e6db74">&quot;Commands:\n&quot;</span>
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;   help    Show this help message&quot;</span>
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;   list    List available AWS credentials profiles&quot;</span>
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;   show    Show the AWS keys associated to a credentials profile&quot;</span>
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;   export  Export an AWS credentials profile keys as environment variables&quot;</span>
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;   unset   Unset the AWS keys variables from the environment&quot;</span>
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;   region  Change aws region which defaults to eu-west-1&quot;</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+<pre><code class="language-bash">function __awskeys_help {
+    echo -e &quot;Usage: awskeys [COMMAND] [profile]\n&quot;
+    echo -e &quot;Helper to AWS credentials file.\n&quot;
+    echo -e &quot;Commands:\n&quot;
+    echo &quot;   help    Show this help message&quot;
+    echo &quot;   list    List available AWS credentials profiles&quot;
+    echo &quot;   show    Show the AWS keys associated to a credentials profile&quot;
+    echo &quot;   export  Export an AWS credentials profile keys as environment variables&quot;
+    echo &quot;   unset   Unset the AWS keys variables from the environment&quot;
+    echo &quot;   region  Change aws region which defaults to eu-west-1&quot;
+}
 
+</code></pre>
 <h5 id="function-calls_1">Function Calls:</h5>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ __awskeys_help
+<pre><code class="language-bash">└─ __awskeys_help
    └─ awskeys
       ├─ __awskeys_region
       ├─ __awskeys_list
       ├─ __awskeys_show
       ├─ __awskeys_export
       └─ __awskeys_unset
-</code></pre></div>
-
+</code></pre>
 <hr />
 <h3 id="__awskeys_region">&gt;&gt; __awskeys_region():</h3>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __awskeys_region <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">new_region</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> -n <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">new_region</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;AWS_DEFAULT_REGION=&#39;${</span><span style="color: #f8f8f2">new_region</span><span style="color: #e6db74">}&#39;&quot;</span>
-        <span style="color: #f8f8f2">export</span> <span style="color: #f8f8f2">AWS_DEFAULT_REGION</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">new_region</span><span style="color: #e6db74">}&quot;</span>
-    <span style="color: #66d9ef">fi</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+<pre><code class="language-bash">function __awskeys_region {
+    local new_region=$1
+    if [[ -n &quot;${new_region}&quot; ]]; then
+    echo &quot;AWS_DEFAULT_REGION='${new_region}'&quot;
+        export AWS_DEFAULT_REGION=&quot;${new_region}&quot;
+    fi
+}
 
+</code></pre>
 <hr />
 <h3 id="__awskeys_get">&gt;&gt; __awskeys_get():</h3>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __awskeys_get <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function __awskeys_get {
 
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">ln</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>grep -n <span style="color: #e6db74">&quot;\[ *</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74"> *\]&quot;</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">AWS_SHARED_CREDENTIALS_FILE</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> cut -d <span style="color: #e6db74">&quot;:&quot;</span> -f <span style="color: #ae81ff">1</span><span style="color: #66d9ef">)</span>
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> -n <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">ln</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">profile_line_idxs</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>grep -n <span style="color: #e6db74">&quot;\[*\]&quot;</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">AWS_SHARED_CREDENTIALS_FILE</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> tr <span style="color: #e6db74">&quot;:&quot;</span> <span style="color: #e6db74">&quot; &quot;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1}&#39;</span> <span style="color: #f8f8f2">|</span> tr <span style="color: #e6db74">&#39;\n&#39;</span> <span style="color: #e6db74">&#39; &#39;</span><span style="color: #66d9ef">)</span>
-        <span style="color: #f8f8f2">local</span>  <span style="color: #f8f8f2">last_line</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>wc -l <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">AWS_SHARED_CREDENTIALS_FILE</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;{print $1}&#39;</span><span style="color: #66d9ef">)</span>
+    local ln=$(grep -n &quot;\[ *$1 *\]&quot; &quot;${AWS_SHARED_CREDENTIALS_FILE}&quot; | cut -d &quot;:&quot; -f 1)
+    if [[ -n &quot;${ln}&quot; ]]; then
+        local profile_line_idxs=$(grep -n &quot;\[*\]&quot; &quot;${AWS_SHARED_CREDENTIALS_FILE}&quot; | tr &quot;:&quot; &quot; &quot; | awk '{print $1}' | tr '\n' ' ')
+        local  last_line=$(wc -l &quot;${AWS_SHARED_CREDENTIALS_FILE}&quot; | awk '{print $1}')
 
-        <span style="color: #f8f8f2">local</span>  <span style="color: #f8f8f2">all_idxs</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">profile_line_idxs</span><span style="color: #e6db74">}${</span><span style="color: #f8f8f2">last_line</span><span style="color: #e6db74">}&quot;</span>
-        <span style="color: #f8f8f2">local</span>  <span style="color: #f8f8f2">term_ln</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$all_idxs</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> tr <span style="color: #e6db74">&#39; &#39;</span> <span style="color: #e6db74">&#39;\n&#39;</span> <span style="color: #f8f8f2">|</span> grep -w -A <span style="color: #ae81ff">1</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$ln</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> tail -1<span style="color: #66d9ef">)</span>
-        <span style="color: #f8f8f2">local</span>  <span style="color: #f8f8f2">match_strings</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;aws_access_key_id|aws_secret_access_key|aws_session_token|aws_default_region|aws_default_output|aws_profile|aws_role_session_name|aws_ca_bundle|AWS_ACCESS_KEY_ID|AWS_SECRET_ACCESS_KEY|AWS_SESSION_TOKEN|AWS_DEFAULT_REGION|AWS_DEFAULT_OUTPUT|AWS_PROFILE|AWS_ROLE_SESSION_NAME|AWS_CA_BUNDLE&quot;</span>
-        sed -n <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">ln</span><span style="color: #e6db74">},${</span><span style="color: #f8f8f2">term_ln</span><span style="color: #e6db74">}p&quot;</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">AWS_SHARED_CREDENTIALS_FILE</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f8f8f2">|</span> egrep  <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">match_strings</span><span style="color: #e6db74">}&quot;</span>
-    <span style="color: #66d9ef">fi</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+        local  all_idxs=&quot;${profile_line_idxs}${last_line}&quot;
+        local  term_ln=$(echo &quot;$all_idxs&quot; | tr ' ' '\n' | grep -w -A 1 &quot;$ln&quot; | tail -1)
+        local  match_strings=&quot;aws_access_key_id|aws_secret_access_key|aws_session_token|aws_default_region|aws_default_output|aws_profile|aws_role_session_name|aws_ca_bundle|AWS_ACCESS_KEY_ID|AWS_SECRET_ACCESS_KEY|AWS_SESSION_TOKEN|AWS_DEFAULT_REGION|AWS_DEFAULT_OUTPUT|AWS_PROFILE|AWS_ROLE_SESSION_NAME|AWS_CA_BUNDLE&quot;
+        sed -n &quot;${ln},${term_ln}p&quot; &quot;${AWS_SHARED_CREDENTIALS_FILE}&quot; | egrep  &quot;${match_strings}&quot;
+    fi
+}
 
+</code></pre>
 <hr />
 <h3 id="__awskeys_list">&gt;&gt; __awskeys_list():</h3>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __awskeys_list <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">credentials_list</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$((</span>egrep <span style="color: #e6db74">&#39;^\[ *[a-zA-Z0-9_-]+ *\]$&#39;</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">AWS_SHARED_CREDENTIALS_FILE</span><span style="color: #e6db74">}&quot;</span><span style="color: #f8f8f2">;</span> grep <span style="color: #e6db74">&quot;\[&quot;</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">AWS_SHARED_CREDENTIALS_FILE</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f92672">|</span> sed <span style="color: #e6db74">&quot;s|\[profile |\[|g&quot;</span><span style="color: #f92672">)</span> <span style="color: #f92672">|</span> sort <span style="color: #f92672">|</span> uniq<span style="color: #f92672">)</span><span style="color: #e6db74">&quot;</span>
-<span style="color: #e6db74">    if [[ -n </span>$<span style="color: #e6db74">&quot;</span><span style="color: #f92672">{</span>credentials_list<span style="color: #f92672">}</span><span style="color: #e6db74">&quot; ]]; then</span>
-<span style="color: #e6db74">        echo -e &quot;</span>Available credentials profiles:<span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span>
-<span style="color: #e6db74">        for profile in ${</span><span style="color: #f8f8f2">credentials_list</span><span style="color: #e6db74">}; do</span>
-<span style="color: #e6db74">            echo &quot;</span>    <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">profile</span><span style="color: #e6db74">}</span> <span style="color: #f8f8f2">|</span> tr -d <span style="color: #e6db74">&quot;[]&quot;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
-<span style="color: #e6db74">        done</span>
-<span style="color: #e6db74">        echo</span>
-<span style="color: #e6db74">    else</span>
-<span style="color: #e6db74">        echo &quot;</span>No profiles found in credentials file<span style="color: #e6db74">&quot;</span>
-<span style="color: #e6db74">    fi</span>
-<span style="color: #e6db74">}</span>
-</code></pre></div>
+<pre><code class="language-bash">function __awskeys_list {
+    local credentials_list=&quot;$((egrep '^\[ *[a-zA-Z0-9_-]+ *\]$' &quot;${AWS_SHARED_CREDENTIALS_FILE}&quot;; grep &quot;\[&quot; &quot;${AWS_SHARED_CREDENTIALS_FILE}&quot; | sed &quot;s|\[profile |\[|g&quot;) | sort | uniq)&quot;
+    if [[ -n $&quot;{credentials_list}&quot; ]]; then
+        echo -e &quot;Available credentials profiles:\n&quot;
+        for profile in ${credentials_list}; do
+            echo &quot;    $(echo ${profile} | tr -d &quot;[]&quot;)&quot;
+        done
+        echo
+    else
+        echo &quot;No profiles found in credentials file&quot;
+    fi
+}
 
+</code></pre>
 <hr />
 <h3 id="__awskeys_show">&gt;&gt; __awskeys_show():</h3>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __awskeys_show <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">p_keys</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>__awskeys_get <span style="color: #f8f8f2">$1</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> -n <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">p_keys</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">p_keys</span><span style="color: #e6db74">}&quot;</span>
-    <span style="color: #66d9ef">else</span>
-        <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;Profile </span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74"> not found in credentials file&quot;</span>
-    <span style="color: #66d9ef">fi</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+<pre><code class="language-bash">function __awskeys_show {
+    local p_keys=&quot;$(__awskeys_get $1)&quot;
+    if [[ -n &quot;${p_keys}&quot; ]]; then
+        echo &quot;${p_keys}&quot;
+    else
+        echo &quot;Profile $1 not found in credentials file&quot;
+    fi
+}
 
+</code></pre>
 <h5 id="function-calls_2">Function Calls:</h5>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ __awskeys_show
+<pre><code class="language-bash">└─ __awskeys_show
    └─ __awskeys_get
-</code></pre></div>
-
+</code></pre>
 <hr />
 <h3 id="__awskeys_export">&gt;&gt; __awskeys_export():</h3>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __awskeys_export <span style="color: #f92672">{</span>
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> <span style="color: #66d9ef">$(</span>__awskeys_list<span style="color: #66d9ef">)</span> <span style="color: #f92672">==</span> *<span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>* <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">p_keys</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span>__awskeys_get <span style="color: #f8f8f2">$1</span> <span style="color: #f8f8f2">|</span> tr -d <span style="color: #e6db74">&quot; &quot;</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
-        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[[</span> -n <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">p_keys</span><span style="color: #e6db74">}&quot;</span> <span style="color: #f92672">]]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-            <span style="color: #66d9ef">for</span> p_key in <span style="color: #e6db74">${</span><span style="color: #f8f8f2">p_keys[@]</span><span style="color: #e6db74">}</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span>
-            <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;* </span><span style="color: #f8f8f2">$p_key</span><span style="color: #e6db74">&quot;</span>
-                <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">p_key%=*</span><span style="color: #e6db74">}&quot;</span>
-                <span style="color: #f8f8f2">export</span> <span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">${</span><span style="color: #f8f8f2">key</span><span style="color: #e6db74">}</span> <span style="color: #f8f8f2">|</span> tr <span style="color: #f92672">[</span>:lower:<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>:upper:<span style="color: #f92672">]</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">=${</span><span style="color: #f8f8f2">p_key#*=</span><span style="color: #e6db74">}&quot;</span>
-            <span style="color: #66d9ef">done</span>
-        <span style="color: #66d9ef">fi</span>
-        <span style="color: #f8f8f2">export</span> <span style="color: #f8f8f2">AWS_PROFILE</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
-    <span style="color: #66d9ef">else</span>
-        <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;Profile </span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74"> not found in credentials file&quot;</span>
-    <span style="color: #66d9ef">fi</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+<pre><code class="language-bash">function __awskeys_export {
+    if [[ $(__awskeys_list) == *&quot;$1&quot;* ]]; then
+        local p_keys=( $(__awskeys_get $1 | tr -d &quot; &quot;) )
+        if [[ -n &quot;${p_keys}&quot; ]]; then
+            for p_key in ${p_keys[@]}; do
+            echo &quot;* $p_key&quot;
+                local key=&quot;${p_key%=*}&quot;
+                export &quot;$(echo ${key} | tr [:lower:] [:upper:])=${p_key#*=}&quot;
+            done
+        fi
+        export AWS_PROFILE=&quot;$1&quot;
+    else
+        echo &quot;Profile $1 not found in credentials file&quot;
+    fi
+}
 
+</code></pre>
 <h5 id="function-calls_3">Function Calls:</h5>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ __awskeys_export
+<pre><code class="language-bash">└─ __awskeys_export
    ├─ __awskeys_get
    └─ __awskeys_list
-</code></pre></div>
-
+</code></pre>
 <hr />
 <h3 id="__awskeys_unset">&gt;&gt; __awskeys_unset():</h3>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __awskeys_unset <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">unset</span> AWS_PROFILE AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
-<span style="color: #f92672">}</span>
-</code></pre></div>
+<pre><code class="language-bash">function __awskeys_unset {
+    unset AWS_PROFILE AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+}
 
+</code></pre>
 <hr />
 <h3 id="__awskeys_comp">&gt;&gt; __awskeys_comp():</h3>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> __awskeys_comp <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">local</span> cur prev opts prevprev
-    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=()</span>
-    <span style="color: #f8f8f2">cur</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">COMP_WORDS[COMP_CWORD]</span><span style="color: #e6db74">}&quot;</span>
-    <span style="color: #f8f8f2">prev</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">COMP_WORDS[COMP_CWORD-1]</span><span style="color: #e6db74">}&quot;</span>
-    <span style="color: #f8f8f2">opts</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;help list show export unset region&quot;</span>
-    <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">prev</span><span style="color: #e6db74">}&quot;</span> in
-        help<span style="color: #f8f8f2">|</span>list<span style="color: #f8f8f2">|unset</span><span style="color: #f92672">)</span>
-            <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span>
-            <span style="color: #f8f8f2">;;</span>
-        show<span style="color: #f8f8f2">|export</span><span style="color: #f92672">)</span>
-            <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">profile_list</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;</span><span style="color: #66d9ef">$(</span>__awskeys_list <span style="color: #f8f8f2">|</span> grep <span style="color: #e6db74">&quot;    &quot;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
-            <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">profile_list</span><span style="color: #e6db74">}&quot;</span> -- <span style="color: #e6db74">${</span><span style="color: #f8f8f2">cur</span><span style="color: #e6db74">}</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
-            <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span>
-            <span style="color: #f8f8f2">;;</span>
-    <span style="color: #66d9ef">esac</span>
-    <span style="color: #f8f8f2">COMPREPLY</span><span style="color: #f92672">=(</span> <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">compgen</span> -W <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">opts</span><span style="color: #e6db74">}&quot;</span> -- <span style="color: #e6db74">${</span><span style="color: #f8f8f2">cur</span><span style="color: #e6db74">}</span><span style="color: #66d9ef">)</span> <span style="color: #f92672">)</span>
-    <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span>
-<span style="color: #f92672">}</span>
+<pre><code class="language-bash">function __awskeys_comp {
+    local cur prev opts prevprev
+    COMPREPLY=()
+    cur=&quot;${COMP_WORDS[COMP_CWORD]}&quot;
+    prev=&quot;${COMP_WORDS[COMP_CWORD-1]}&quot;
+    opts=&quot;help list show export unset region&quot;
+    case &quot;${prev}&quot; in
+        help|list|unset)
+            return 0
+            ;;
+        show|export)
+            local profile_list=&quot;$(__awskeys_list | grep &quot;    &quot;)&quot;
+            COMPREPLY=( $(compgen -W &quot;${profile_list}&quot; -- ${cur}) )
+            return 0
+            ;;
+    esac
+    COMPREPLY=( $(compgen -W &quot;${opts}&quot; -- ${cur}) )
+    return 0
+}
 
-<span style="color: #f8f8f2">complete</span> -F __awskeys_comp awskeys
-</code></pre></div>
+complete -F __awskeys_comp awskeys
 
+</code></pre>
 <h5 id="function-calls_4">Function Calls:</h5>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ __awskeys_comp
+<pre><code class="language-bash">└─ __awskeys_comp
    └─ __awskeys_list
-</code></pre></div>
+</code></pre>
 
   <br>
     

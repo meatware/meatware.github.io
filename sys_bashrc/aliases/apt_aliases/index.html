@@ -87,9 +87,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="apt-dpkg-aliases-for-ubuntu-and-debian-distros">Apt &amp; dpkg aliases for Ubuntu and Debian distros.</h1>
 <p><strong><em>(in /home/bsgt/sys_bashrc/aliases/apt_aliases.sh)</em></strong></p>
 <h2 id="function-index">Function Index</h2>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">ubupdate</span>
-</code></pre></div>
-
+<pre><code class="language-python">01 - ubupdate
+</code></pre>
 <hr />
 <h3 id="ubupdate">&gt;&gt; ubupdate():</h3>
 <blockquote>
@@ -97,14 +96,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>group</em></strong>: base</p>
 <p><strong><em>example</em></strong>: <code>ubupdate</code></p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> ubupdate<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function ubupdate() {
 
     sudo apt update
     sudo apt upgrade -y
     sudo apt auto-remove
-<span style="color: #f92672">}</span>
-</code></pre></div>
+}
 
+</code></pre>
 <h2 id="aliases">Aliases</h2>
 <table>
 <thead>

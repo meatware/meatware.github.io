@@ -62,12 +62,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../docker-compose_module/" class="btn btn-xs btn-default pull-right">
+      <a href="../ssh_helper_module/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../docker-compose_module/" class="btn btn-xs btn-link">
-        docker-compose_module
+      <a href="../ssh_helper_module/" class="btn btn-xs btn-link">
+        ssh_helper_module
       </a>
     </div>
     
@@ -86,39 +86,47 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="base-module">Base module</h1>
 <p><strong><em>(in /home/bsgt/sys_bashrc/modules/base_module.sh)</em></strong></p>
 <h2 id="function-index">Function Index</h2>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #ae81ff">01</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">ips</span>
-<span style="color: #ae81ff">02</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">down4me</span>
-<span style="color: #ae81ff">03</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">myip</span>
-<span style="color: #ae81ff">04</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">pickfrom</span>
-<span style="color: #ae81ff">05</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">passgen</span>
-<span style="color: #ae81ff">06</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">mkcd</span>
-<span style="color: #ae81ff">07</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">lsgrep</span>
-<span style="color: #ae81ff">08</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">usage</span>
-<span style="color: #ae81ff">09</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">comex</span>
-<span style="color: #ae81ff">10</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">buf</span>
-<span style="color: #ae81ff">11</span> <span style="color: #f92672">-</span> <span style="color: #66d9ef">del</span>
-</code></pre></div>
-
+<pre><code class="language-python">01 - ips
+02 - down4me
+03 - myip
+04 - pickfrom
+05 - passgen
+06 - mkcd
+07 - lsgrep
+08 - usage
+09 - comex
+10 - buf
+11 - del
+12 - gedit
+13 - nomacs
+14 - Ngedit
+15 - terminator
+16 - grepo
+17 - grepoall
+18 - del_file_by_patt
+19 - venv_create
+20 - venv_activate
+</code></pre>
 <hr />
 <h3 id="ips">&gt;&gt; ips():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: display all ip addresses for this host</p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> ips<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function ips() {
 
-    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">command</span> -v ifconfig <span style="color: #f8f8f2">&amp;</span>&gt;/dev/null
-    <span style="color: #66d9ef">then</span>
-        ifconfig <span style="color: #f8f8f2">|</span> awk <span style="color: #e6db74">&#39;/inet /{ gsub(/addr:/, &quot;&quot;); print $2 }&#39;</span>
-    <span style="color: #66d9ef">elif</span> <span style="color: #f8f8f2">command</span> -v ip <span style="color: #f8f8f2">&amp;</span>&gt;/dev/null
-    <span style="color: #66d9ef">then</span>
-        ip addr <span style="color: #f8f8f2">|</span> grep -oP <span style="color: #e6db74">&#39;inet \K[\d.]+&#39;</span>
-    <span style="color: #66d9ef">else</span>
-        <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;You don&#39;t have ifconfig or ip command installed!&quot;</span>
-    <span style="color: #66d9ef">fi</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    if command -v ifconfig &amp;&gt;/dev/null
+    then
+        ifconfig | awk '/inet /{ gsub(/addr:/, &quot;&quot;); print $2 }'
+    elif command -v ip &amp;&gt;/dev/null
+    then
+        ip addr | grep -oP 'inet \K[\d.]+'
+    else
+        echo &quot;You don't have ifconfig or ip command installed!&quot;
+    fi
+}
 
+</code></pre>
 <hr />
 <h3 id="down4me">&gt;&gt; down4me():</h3>
 <blockquote>
@@ -127,33 +135,33 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>example</em></strong>: <code>$ down4me http://www.google.com</code></p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> down4me<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function down4me() {
 
-    curl -Ls <span style="color: #e6db74">&quot;http://downforeveryoneorjustme.com/</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> sed <span style="color: #e6db74">&#39;/just you/!d;s/&lt;[^&gt;]*&gt;//g&#39;</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    curl -Ls &quot;http://downforeveryoneorjustme.com/$1&quot; | sed '/just you/!d;s/&lt;[^&gt;]*&gt;//g'
+}
 
+</code></pre>
 <hr />
 <h3 id="myip">&gt;&gt; myip():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: displays your ip address, as seen by the Internet</p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> myip<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function myip() {
 
-    <span style="color: #f8f8f2">list</span><span style="color: #f92672">=(</span><span style="color: #e6db74">&quot;http://myip.dnsomatic.com/&quot;</span> <span style="color: #e6db74">&quot;http://checkip.dyndns.com/&quot;</span> <span style="color: #e6db74">&quot;http://checkip.dyndns.org/&quot;</span><span style="color: #f92672">)</span>
-    <span style="color: #66d9ef">for</span> url in <span style="color: #e6db74">${</span><span style="color: #f8f8f2">list[*]</span><span style="color: #e6db74">}</span>
-    <span style="color: #66d9ef">do</span>
-        <span style="color: #f8f8f2">res</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>curl -s <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">url</span><span style="color: #e6db74">}&quot;</span><span style="color: #66d9ef">)</span>
-        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #f8f8f2">$?</span> -eq <span style="color: #ae81ff">0</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span><span style="color: #66d9ef">then</span>
-            break<span style="color: #f8f8f2">;</span>
-        <span style="color: #66d9ef">fi</span>
-    <span style="color: #66d9ef">done</span>
-    <span style="color: #f8f8f2">res</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$res</span><span style="color: #e6db74">&quot;</span> <span style="color: #f8f8f2">|</span> grep -Eo <span style="color: #e6db74">&#39;[0-9\.]+&#39;</span><span style="color: #66d9ef">)</span>
-    <span style="color: #f8f8f2">echo</span> -e <span style="color: #e6db74">&quot;Your public IP is: ${</span><span style="color: #f8f8f2">echo_bold_green</span><span style="color: #e6db74">} </span><span style="color: #f8f8f2">$res</span><span style="color: #e6db74"> ${</span><span style="color: #f8f8f2">echo_normal</span><span style="color: #e6db74">}&quot;</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    list=(&quot;http://myip.dnsomatic.com/&quot; &quot;http://checkip.dyndns.com/&quot; &quot;http://checkip.dyndns.org/&quot;)
+    for url in ${list[*]}
+    do
+        res=$(curl -s &quot;${url}&quot;)
+        if [ $? -eq 0 ];then
+            break;
+        fi
+    done
+    res=$(echo &quot;$res&quot; | grep -Eo '[0-9\.]+')
+    echo -e &quot;Your public IP is: ${echo_bold_green} $res ${echo_normal}&quot;
+}
 
+</code></pre>
 <hr />
 <h3 id="pickfrom">&gt;&gt; pickfrom():</h3>
 <blockquote>
@@ -162,16 +170,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>example</em></strong>: <code>$ pickfrom /usr/share/dict/words</code></p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> pickfrom<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function pickfrom() {
 
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">file</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
-    <span style="color: #f92672">[</span> -z <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$file</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span> <span style="color: #f92672">&amp;&amp;</span> reference <span style="color: #f8f8f2">$FUNCNAME</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #66d9ef">return</span>
-    <span style="color: #f8f8f2">length</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>cat <span style="color: #f8f8f2">$file</span> <span style="color: #f8f8f2">|</span> wc -l<span style="color: #66d9ef">)</span>
-    <span style="color: #f8f8f2">n</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>expr <span style="color: #f8f8f2">$RANDOM</span> <span style="color: #ae81ff">\*</span> <span style="color: #f8f8f2">$length</span> <span style="color: #ae81ff">\/</span> <span style="color: #ae81ff">32768</span> + <span style="color: #ae81ff">1</span><span style="color: #66d9ef">)</span>
-    head -n <span style="color: #f8f8f2">$n</span> <span style="color: #f8f8f2">$file</span> <span style="color: #f8f8f2">|</span> tail -1
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    local file=$1
+    [ -z &quot;$file&quot; ] &amp;&amp; reference $FUNCNAME &amp;&amp; return
+    length=$(cat $file | wc -l)
+    n=$(expr $RANDOM \* $length \/ 32768 + 1)
+    head -n $n $file | tail -1
+}
 
+</code></pre>
 <hr />
 <h3 id="passgen">&gt;&gt; passgen():</h3>
 <blockquote>
@@ -182,20 +190,19 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>example</em></strong>: <code>$ passgen 6</code></p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> passgen<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function passgen() {
 
-    <span style="color: #f8f8f2">local</span> i pass <span style="color: #f8f8f2">length</span><span style="color: #f92672">=</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">1</span><span style="color: #66d9ef">:-</span><span style="color: #f8f8f2">4</span><span style="color: #e6db74">}</span>
-    <span style="color: #f8f8f2">pass</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #66d9ef">$(for</span> i in <span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">eval</span> <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;{1..</span><span style="color: #f8f8f2">$length</span><span style="color: #e6db74">}&quot;</span><span style="color: #66d9ef">)</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span> pickfrom /usr/share/dict/words<span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">done))</span>
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;With spaces (easier to memorize): </span><span style="color: #f8f8f2">$pass</span><span style="color: #e6db74">&quot;</span>
-    <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&quot;Without (use this as the password): </span><span style="color: #66d9ef">$(</span><span style="color: #f8f8f2">echo</span> <span style="color: #f8f8f2">$pass</span> <span style="color: #f8f8f2">|</span> tr -d <span style="color: #e6db74">&#39; &#39;</span><span style="color: #66d9ef">)</span><span style="color: #e6db74">&quot;</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    local i pass length=${1:-4}
+    pass=$(echo $(for i in $(eval echo &quot;{1..$length}&quot;); do pickfrom /usr/share/dict/words; done))
+    echo &quot;With spaces (easier to memorize): $pass&quot;
+    echo &quot;Without (use this as the password): $(echo $pass | tr -d ' ')&quot;
+}
 
+</code></pre>
 <h5 id="function-calls">Function Calls:</h5>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code>└─ passgen
+<pre><code class="language-bash">└─ passgen
    └─ pickfrom
-</code></pre></div>
-
+</code></pre>
 <hr />
 <h3 id="mkcd">&gt;&gt; mkcd():</h3>
 <blockquote>
@@ -207,24 +214,24 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>example</em></strong>: <code>$ mkcd /tmp/img/photos/large /tmp/img/photos/self /tmp/img/photos/Beijing</code></p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> mkcd<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function mkcd() {
 
-    mkdir -p -- <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">eval</span> <span style="color: #f8f8f2">cd</span> -- <span style="color: #e6db74">&quot;\&quot;\$</span><span style="color: #f8f8f2">$#</span><span style="color: #e6db74">\&quot;&quot;</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    mkdir -p -- &quot;$@&quot; &amp;&amp; eval cd -- &quot;\&quot;\$$#\&quot;&quot;
+}
 
+</code></pre>
 <hr />
 <h3 id="lsgrep">&gt;&gt; lsgrep():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: search through directory contents with grep</p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> lsgrep<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function lsgrep() {
 
-    ls <span style="color: #f8f8f2">|</span> grep <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$*</span><span style="color: #e6db74">&quot;</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    ls | grep &quot;$*&quot;
+}
 
+</code></pre>
 <hr />
 <h3 id="usage">&gt;&gt; usage():</h3>
 <blockquote>
@@ -232,25 +239,25 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>param</em></strong>: 1: directory name</p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> usage<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function usage() {
 
-    <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #66d9ef">$(</span>uname<span style="color: #66d9ef">)</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Darwin&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-            du -hd <span style="color: #ae81ff">1</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
-        <span style="color: #66d9ef">else</span>
-            du -hd <span style="color: #ae81ff">1</span>
-        <span style="color: #66d9ef">fi</span>
+    if [ $(uname) = &quot;Darwin&quot; ]; then
+        if [ -n &quot;$1&quot; ]; then
+            du -hd 1 &quot;$1&quot;
+        else
+            du -hd 1
+        fi
 
-    <span style="color: #66d9ef">elif</span> <span style="color: #f92672">[</span> <span style="color: #66d9ef">$(</span>uname<span style="color: #66d9ef">)</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Linux&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-        <span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -n <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
-            du -h --max-depth<span style="color: #f92672">=</span><span style="color: #ae81ff">1</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>
-        <span style="color: #66d9ef">else</span>
-            du -h --max-depth<span style="color: #f92672">=</span><span style="color: #ae81ff">1</span>
-        <span style="color: #66d9ef">fi</span>
-    <span style="color: #66d9ef">fi</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    elif [ $(uname) = &quot;Linux&quot; ]; then
+        if [ -n &quot;$1&quot; ]; then
+            du -h --max-depth=1 &quot;$1&quot;
+        else
+            du -h --max-depth=1
+        fi
+    fi
+}
 
+</code></pre>
 <hr />
 <h3 id="comex">&gt;&gt; comex():</h3>
 <blockquote>
@@ -259,12 +266,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>example</em></strong>: <code>$ comex ls</code></p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> comex<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function comex() {
 
-    <span style="color: #f8f8f2">type</span> <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$1</span><span style="color: #e6db74">&quot;</span>  <span style="color: #75715e">#&amp;&gt; /dev/null ;</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    type &quot;$1&quot;  #&amp;&gt; /dev/null ;
+}
 
+</code></pre>
 <hr />
 <h3 id="buf">&gt;&gt; buf():</h3>
 <blockquote>
@@ -272,14 +279,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>param</em></strong>: filename</p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> buf<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function buf() {
 
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">filename</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">$1</span>
-    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">filetime</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>date +%Y%m%d_%H%M%S<span style="color: #66d9ef">)</span>
-    cp -a <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">filename</span><span style="color: #e6db74">}&quot;</span> <span style="color: #e6db74">&quot;${</span><span style="color: #f8f8f2">filename</span><span style="color: #e6db74">}_${</span><span style="color: #f8f8f2">filetime</span><span style="color: #e6db74">}&quot;</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    local filename=$1
+    local filetime=$(date +%Y%m%d_%H%M%S)
+    cp -a &quot;${filename}&quot; &quot;${filename}_${filetime}&quot;
+}
 
+</code></pre>
 <hr />
 <h3 id="del">&gt;&gt; del():</h3>
 <blockquote>
@@ -288,11 +295,162 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>example</em></strong>: <code>del ./file.txt</code></p>
 <p><strong><em>group</em></strong>: base</p>
 </blockquote>
-<div class="codehilite" style="background: #272822"><pre style="line-height: 125%; margin: 0;"><span></span><code><span style="color: #66d9ef">function</span> del<span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+<pre><code class="language-bash">function del() {
 
-    mkdir -p /tmp/.trash <span style="color: #f92672">&amp;&amp;</span> mv <span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">$@</span><span style="color: #e6db74">&quot;</span> /tmp/.trash<span style="color: #f8f8f2">;</span>
-<span style="color: #f92672">}</span>
-</code></pre></div>
+    mkdir -p /tmp/.trash &amp;&amp; mv &quot;$@&quot; /tmp/.trash;
+}
+
+</code></pre>
+<hr />
+<h3 id="gedit">&gt;&gt; gedit():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Opens non-blocking program from terminal</p>
+<p><strong><em>group</em></strong>: base</p>
+<p><strong><em>example</em></strong>: <code>gedit $filename</code></p>
+</blockquote>
+<pre><code class="language-bash">function gedit() {
+
+    command gedit &quot;$@&quot; &amp;&gt;/dev/null &amp;
+}
+
+</code></pre>
+<hr />
+<h3 id="nomacs">&gt;&gt; nomacs():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Opens non-blocking program from terminal</p>
+<p><strong><em>group</em></strong>: base</p>
+<p><strong><em>example</em></strong>: <code>nomacs $filename</code></p>
+</blockquote>
+<pre><code class="language-bash">function nomacs() {
+
+    command nomacs &quot;$@&quot; &amp;&gt;/dev/null &amp;
+}
+
+</code></pre>
+<hr />
+<h3 id="ngedit">&gt;&gt; Ngedit():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Opens non-blocking program from terminal</p>
+<p><strong><em>group</em></strong>: base</p>
+<p><strong><em>example</em></strong>: <code>Ngedit $filename</code></p>
+</blockquote>
+<pre><code class="language-bash">function Ngedit() {
+
+    command gedit --new-window &quot;$@&quot; &amp;&gt;/dev/null &amp;
+}
+
+</code></pre>
+<h5 id="function-calls_1">Function Calls:</h5>
+<pre><code class="language-bash">└─ Ngedit
+   └─ gedit
+</code></pre>
+<hr />
+<h3 id="terminator">&gt;&gt; terminator():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Opens non-blocking program from terminal</p>
+<p><strong><em>group</em></strong>: base</p>
+<p><strong><em>example</em></strong>: <code>terminator $filename</code></p>
+</blockquote>
+<pre><code class="language-bash">function terminator() {
+
+    command terminator --geometry=945x1200+0+0 &quot;$@&quot; &amp;&gt;/dev/null &amp;
+}
+
+</code></pre>
+<hr />
+<h3 id="grepo">&gt;&gt; grepo():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Find all files "*" recursively from current directory and grep within each file for a pattern</p>
+<p><strong><em>group</em></strong>: base</p>
+<p><strong><em>param</em></strong>: Pattern to grep for</p>
+<p><strong><em>example</em></strong>: <code>grepo $PATERN</code></p>
+<p><strong><em>example</em></strong>: <code>grepo import</code></p>
+</blockquote>
+<pre><code class="language-bash">function grepo() {
+    find ./ -not -path &quot;*/\.*&quot; -not -path &quot;*venv/*&quot; -not -path &quot;*node_modules/*&quot; -name &quot;*&quot; -exec grep --color=auto -Isi &quot;$1&quot; {}  \;
+}
+
+</code></pre>
+<hr />
+<h3 id="grepoall">&gt;&gt; grepoall():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Find all files "*" recursively from current directory and grep within each file for a pattern</p>
+<p><strong><em>group</em></strong>: base</p>
+<p><strong><em>param</em></strong>: 1. Pattern to grep for</p>
+<p><strong><em>param</em></strong>: 2. File type to find in double quotes</p>
+<p><strong><em>example</em></strong>: <code>grepoall $PATERN</code></p>
+<p><strong><em>example</em></strong>: <code>grepoall import</code></p>
+<p><strong><em>example</em></strong>: <code>grepoall $PATERN $FILE_PATTERN</code></p>
+<p><strong><em>example</em></strong>: <code>grepoall import "*.py"</code></p>
+</blockquote>
+<pre><code class="language-bash">function grepoall() {
+
+    TXT_PATTERN=&quot;$1&quot;
+    if [[ $# -eq 2 ]]; then
+        FILE_SEARCH=&quot;$2&quot;
+    else
+        FILE_SEARCH=&quot;*&quot;
+    fi
+
+    find ./ -not -path &quot;*/\.*&quot; -not -path &quot;*venv/*&quot; -not -path &quot;*node_modules/*&quot; -iname &quot;${FILE_SEARCH}&quot; -exec grep --color=auto -Isin &quot;$TXT_PATTERN&quot; {} /dev/null \;
+}
+
+</code></pre>
+<hr />
+<h3 id="del_file_by_patt">&gt;&gt; del_file_by_patt():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Delete all files matching a pattern</p>
+<p><strong><em>group</em></strong>: base</p>
+<p><strong><em>param</em></strong>: 1. Delete pattern</p>
+<p><strong><em>example</em></strong>: <code>del_file_by_patt $DEL_PATERN</code></p>
+<p><strong><em>example</em></strong>: <code>del_file_by_patt "*.css"</code></p>
+</blockquote>
+<pre><code class="language-bash">function del_file_by_patt() {
+
+    file_ext=&quot;$1&quot;
+    find . -name &quot;$file_ext&quot; -exec rm -fv {} \;
+}
+
+</code></pre>
+<hr />
+<h3 id="venv_create">&gt;&gt; venv_create():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Create &amp; activte a python virtual environment. Works with Python3</p>
+<p><strong><em>group</em></strong>: base</p>
+<p><strong><em>param</em></strong>: python version findable on path. Test with $(which)</p>
+<p><strong><em>example</em></strong>: <code>venv_create python3.6</code></p>
+</blockquote>
+<pre><code class="language-bash">function venv_create() {
+
+    if [[ $# -ge 1 ]]; then
+        desired_py_version=$1
+        pyth_ver=$(which $desired_py_version)
+        if [[ -z &quot;${pyth_ver}&quot; ]]; then
+            echo &quot;python version $desired_py_version not found&quot;
+        else
+            $pyth_ver -m venv venv
+            source venv/bin/activate
+        fi
+    else
+        echo &quot;supply an arg&quot;
+    fi
+}
+
+</code></pre>
+<hr />
+<h3 id="venv_activate">&gt;&gt; venv_activate():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Activte an existing python virtual environment</p>
+<p><strong><em>group</em></strong>: base</p>
+<p><strong><em>param</em></strong>: python version findable on path. Test with $(which)</p>
+<p><strong><em>example</em></strong>: <code>venv_activate</code></p>
+</blockquote>
+<pre><code class="language-bash">function venv_activate() {
+
+    source venv/bin/activate
+}
+
+</code></pre>
 
   <br>
     
@@ -305,12 +463,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../docker-compose_module/" class="btn btn-xs btn-default pull-right">
+      <a href="../ssh_helper_module/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../docker-compose_module/" class="btn btn-xs btn-link">
-        docker-compose_module
+      <a href="../ssh_helper_module/" class="btn btn-xs btn-link">
+        ssh_helper_module
       </a>
     </div>
     
