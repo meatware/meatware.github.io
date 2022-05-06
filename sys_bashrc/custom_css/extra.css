@@ -232,12 +232,12 @@ th {
   color: #00c8b3;
   font-weight: bolder;
   font-size: large;
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
 }
 
 td { color: mintcream;
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
 }
 td:nth-child(1) { color: #00c8b3; }
