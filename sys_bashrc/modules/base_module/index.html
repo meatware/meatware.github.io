@@ -62,20 +62,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../ssh_helper_module/" class="btn btn-xs btn-default pull-right">
+      <a href="../docker_module/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../ssh_helper_module/" class="btn btn-xs btn-link">
-        ssh_helper_module
+      <a href="../docker_module/" class="btn btn-xs btn-link">
+        docker_module
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../history_module/" class="btn btn-xs btn-default pull-left">
+      <a href="../installer_module/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../history_module/" class="btn btn-xs btn-link">
-        history_module
+        Previous</a><a href="../installer_module/" class="btn btn-xs btn-link">
+        installer_module
       </a>
     </div>
     
@@ -95,17 +95,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 07 - lsgrep
 08 - usage
 09 - comex
-10 - buf
-11 - del
-12 - gedit
-13 - nomacs
-14 - Ngedit
-15 - terminator
-16 - grepo
-17 - grepoall
-18 - del_file_by_patt
-19 - venv_create
-20 - venv_activate
+10 - default-file-dir-perms-set
+11 - buf
+12 - del
+13 - gedit
+14 - nomacs
+15 - Ngedit
+16 - terminator
+17 - grepo
+18 - grepoall
+19 - del_file_by_patt
+20 - venv_create
+21 - venv_activate
 </code></pre>
 <hr />
 <h3 id="ips">&gt;&gt; ips():</h3>
@@ -131,9 +132,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="down4me">&gt;&gt; down4me():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: checks whether a website is down for you, or everybody</p>
+<p><strong><em>group</em></strong>: base</p>
 <p><strong><em>param</em></strong>: 1: website url</p>
 <p><strong><em>example</em></strong>: <code>$ down4me http://www.google.com</code></p>
-<p><strong><em>group</em></strong>: base</p>
 </blockquote>
 <pre><code class="language-bash">function down4me() {
 
@@ -166,9 +167,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="pickfrom">&gt;&gt; pickfrom():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: picks random line from file</p>
+<p><strong><em>group</em></strong>: base</p>
 <p><strong><em>param</em></strong>: 1: filename</p>
 <p><strong><em>example</em></strong>: <code>$ pickfrom /usr/share/dict/words</code></p>
-<p><strong><em>group</em></strong>: base</p>
 </blockquote>
 <pre><code class="language-bash">function pickfrom() {
 
@@ -184,11 +185,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="passgen">&gt;&gt; passgen():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: generates random password from dictionary words</p>
+<p><strong><em>group</em></strong>: base</p>
 <p><strong><em>param</em></strong>: optional integer length</p>
 <p><strong><em>param</em></strong>: if unset, defaults to 4</p>
 <p><strong><em>example</em></strong>: <code>$ passgen</code></p>
 <p><strong><em>example</em></strong>: <code>$ passgen 6</code></p>
-<p><strong><em>group</em></strong>: base</p>
 </blockquote>
 <pre><code class="language-bash">function passgen() {
 
@@ -207,12 +208,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="mkcd">&gt;&gt; mkcd():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: make one or more directories and cd into the last one</p>
+<p><strong><em>group</em></strong>: base</p>
 <p><strong><em>param</em></strong>: one or more directories to create</p>
 <p><strong><em>example</em></strong>: <code>$ mkcd foo</code></p>
 <p><strong><em>example</em></strong>: <code>$ mkcd /tmp/img/photos/large</code></p>
 <p><strong><em>example</em></strong>: <code>$ mkcd foo foo1 foo2 fooN</code></p>
 <p><strong><em>example</em></strong>: <code>$ mkcd /tmp/img/photos/large /tmp/img/photos/self /tmp/img/photos/Beijing</code></p>
-<p><strong><em>group</em></strong>: base</p>
 </blockquote>
 <pre><code class="language-bash">function mkcd() {
 
@@ -236,8 +237,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="usage">&gt;&gt; usage():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: disk usage per directory, in Mac OS X and Linux</p>
-<p><strong><em>param</em></strong>: 1: directory name</p>
 <p><strong><em>group</em></strong>: base</p>
+<p><strong><em>param</em></strong>: 1: directory name</p>
 </blockquote>
 <pre><code class="language-bash">function usage() {
 
@@ -262,9 +263,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="comex">&gt;&gt; comex():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: checks for existence of a command</p>
+<p><strong><em>group</em></strong>: base</p>
 <p><strong><em>param</em></strong>: 1: command to check</p>
 <p><strong><em>example</em></strong>: <code>$ comex ls</code></p>
-<p><strong><em>group</em></strong>: base</p>
 </blockquote>
 <pre><code class="language-bash">function comex() {
 
@@ -273,11 +274,26 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 </code></pre>
 <hr />
+<h3 id="default-file-dir-perms-set">&gt;&gt; default-file-dir-perms-set():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Recursively set directories to 0755 &amp; files under <code>pwd</code> to 0644 octal perms</p>
+<p><strong><em>group</em></strong>: base</p>
+<p><strong><em>example</em></strong>: <code>default-file-dir-perms-set</code></p>
+</blockquote>
+<pre><code class="language-bash">function default-file-dir-perms-set() {
+
+    find . -type d -print0 | xargs -r -0 chmod 0755
+    find . -type f -print0 | xargs -r -0 chmod 0644
+}
+
+</code></pre>
+<hr />
 <h3 id="buf">&gt;&gt; buf():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: back up file with timestamp</p>
-<p><strong><em>param</em></strong>: filename</p>
 <p><strong><em>group</em></strong>: base</p>
+<p><strong><em>param</em></strong>: filename</p>
+<p><strong><em>example</em></strong>: <code>buf $filename</code></p>
 </blockquote>
 <pre><code class="language-bash">function buf() {
 
@@ -291,9 +307,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="del">&gt;&gt; del():</h3>
 <blockquote>
 <p><strong><em>about</em></strong>: move files to hidden folder in tmp, that gets cleared on each reboot</p>
-<p><strong><em>param</em></strong>: file or folder to be deleted</p>
-<p><strong><em>example</em></strong>: <code>del ./file.txt</code></p>
 <p><strong><em>group</em></strong>: base</p>
+<p><strong><em>param</em></strong>: file or folder to be deleted</p>
+<p><strong><em>example</em></strong>: <code>del $filename</code></p>
+<p><strong><em>example</em></strong>: <code>del $foldername</code></p>
 </blockquote>
 <pre><code class="language-bash">function del() {
 
@@ -463,20 +480,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../ssh_helper_module/" class="btn btn-xs btn-default pull-right">
+      <a href="../docker_module/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../ssh_helper_module/" class="btn btn-xs btn-link">
-        ssh_helper_module
+      <a href="../docker_module/" class="btn btn-xs btn-link">
+        docker_module
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../history_module/" class="btn btn-xs btn-default pull-left">
+      <a href="../installer_module/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../history_module/" class="btn btn-xs btn-link">
-        history_module
+        Previous</a><a href="../installer_module/" class="btn btn-xs btn-link">
+        installer_module
       </a>
     </div>
     

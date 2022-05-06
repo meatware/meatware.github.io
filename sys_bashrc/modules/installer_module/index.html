@@ -62,20 +62,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../git_module/" class="btn btn-xs btn-default pull-right">
+      <a href="../base_module/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../git_module/" class="btn btn-xs btn-link">
-        git_module
+      <a href="../base_module/" class="btn btn-xs btn-link">
+        base_module
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../docker-compose_module/" class="btn btn-xs btn-default pull-left">
+      <a href="../aws_module/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../docker-compose_module/" class="btn btn-xs btn-link">
-        docker-compose_module
+        Previous</a><a href="../aws_module/" class="btn btn-xs btn-link">
+        aws_module
       </a>
     </div>
     
@@ -88,6 +88,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="function-index">Function Index</h2>
 <pre><code class="language-python">01 - get-latest-gh-release
 02 - install-usr-local
+03 - install-sys-bashrc-deps
 </code></pre>
 <hr />
 <h3 id="get-latest-gh-release">&gt;&gt; get-latest-gh-release():</h3>
@@ -95,13 +96,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong><em>about</em></strong>: Download &amp; extract the latest package release from gihub releases page to /tmp. Use install-usr-local() to install correct file</p>
 <p><strong><em>group</em></strong>: installers</p>
 <p><strong><em>param</em></strong>: 1: package name. This is used to search an internal dictionary for github connection details</p>
-<p><strong><em>example</em></strong>: <code>$ get-latest-gh-release ccat</code></p>
+<p><strong><em>example</em></strong>: <code>get-latest-gh-release ccat</code></p>
 </blockquote>
 <pre><code class="language-bash">function get-latest-gh-release() {
 
     local PACKAGE_NAME=$1
     local GITHUB_USER=$(echo &quot;${GH_INSTALL_LIB[${PACKAGE_NAME}]}&quot; | cut -d, -f1)
     local GITHUB_REPO=$(echo &quot;${GH_INSTALL_LIB[${PACKAGE_NAME}]}&quot; | cut -d, -f2)
+
+    if ! command -v jq &amp;&gt; /dev/null; then    
+        echo -e &quot;please install sys_bashrc dependencies using the command: \ninstall-sys-bashrc-deps&quot;
+        return 42
+    fi
 
     local LNX_AMD64_RELEASE_URL=$(wget -q -nv -O- &quot;https://api.github.com/repos/$GITHUB_USER/$GITHUB_REPO/releases/latest&quot; 2&gt;/dev/null |  jq -r '.assets[] | select(.browser_download_url | contains(&quot;linux-amd64&quot;)) | .browser_download_url')
 
@@ -110,8 +116,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     wget -q -nv -O &quot;/tmp/${REL_FILE}&quot; $LNX_AMD64_RELEASE_URL
     if [ ! -f &quot;/tmp/${REL_FILE}&quot; ]; then
-        echo -e &quot;\nDidn't download $LNX_AMD64_RELEASE_URL properly.  Where is /tmp/${REL_FILE}?&quot;
-        exit 1
+        echo -e &quot;\n~~~~~~~~~~~~~~~\nDidn't download $PACKAGE_NAME from url:$LNX_AMD64_RELEASE_URL properly.  Where is /tmp/${REL_FILE}?&quot;
+        return 42
     fi
 
     echo &quot;Now extracting $REL_FILE to /tmp&quot;
@@ -123,10 +129,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h3 id="install-usr-local">&gt;&gt; install-usr-local():</h3>
 <blockquote>
-<p><strong><em>about</em></strong>: Move program</p>
+<p><strong><em>about</em></strong>: Move program to /usr/local/bin</p>
 <p><strong><em>group</em></strong>: installers</p>
 <p><strong><em>param</em></strong>: 1: Program file to move to /usr/local/bin. This function makes it executable</p>
-<p><strong><em>example</em></strong>: <code>$ install-usr-local ${SOME_PROG}</code></p>
+<p><strong><em>example</em></strong>: <code>install-usr-local ${SOME_PROG}</code></p>
 </blockquote>
 <pre><code class="language-bash">function install-usr-local() {
 
@@ -134,6 +140,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     sudo mv -fv $MYPROG /usr/local/bin
     sudo chmod -v +x /usr/local/bin/$(basename $MYPROG)
+}
+
+</code></pre>
+<hr />
+<h3 id="install-sys-bashrc-deps">&gt;&gt; install-sys-bashrc-deps():</h3>
+<blockquote>
+<p><strong><em>about</em></strong>: Install sys_bashrc dependencies</p>
+<p><strong><em>group</em></strong>: installers</p>
+<p><strong><em>example</em></strong>: <code>install-sys-bashrc-deps</code></p>
+</blockquote>
+<pre><code class="language-bash">function install-sys-bashrc-deps() {
+    sudo apt install jq
 }
 
 </code></pre>
@@ -149,20 +167,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../git_module/" class="btn btn-xs btn-default pull-right">
+      <a href="../base_module/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../git_module/" class="btn btn-xs btn-link">
-        git_module
+      <a href="../base_module/" class="btn btn-xs btn-link">
+        base_module
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../docker-compose_module/" class="btn btn-xs btn-default pull-left">
+      <a href="../aws_module/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../docker-compose_module/" class="btn btn-xs btn-link">
-        docker-compose_module
+        Previous</a><a href="../aws_module/" class="btn btn-xs btn-link">
+        aws_module
       </a>
     </div>
     
